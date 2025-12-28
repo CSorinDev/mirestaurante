@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	miResaurante - Inicio
+{% endblock %}
+
+{% block body %}
+	<main>
+		<section>
+			{{form(login_form)}}
+            <div style="text-align: center;">
+                ¿Aún no eres miembro?
+                <a style="color: blue" href="{{path('register')}}">Regístrate</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}
