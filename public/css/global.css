@@ -1,6 +1,7 @@
 :root {
     --color-primary: #000;
-    --color-background: tomato;
+    --color-background: #ff6347;
+    --color-background-hover: #ee5337;
 }
 
 * {
@@ -16,8 +17,19 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-section {
+section { 
     padding: 1em;
+}
+
+section:not(#hero) {
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-bottom: 5em;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 ul {
@@ -29,15 +41,28 @@ a {
     color: var(--color-primary);
 }
 
-button {
+p {
+    margin-bottom: .5em;
+}
+
+button:not(#hbBtn) {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    background-color: var(--color-background);
+    padding: .5em;
+    border-radius: 5px;
+    transition: .3s;
+    padding: .5em 1em;
+}
+
+button:not(#hbBtn):hover {
+    background-color: var(--color-background-hover);
 }
 
 /* HEADER */
 
-header {
+#mainHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,13 +70,16 @@ header {
     background-color: var(--color-background);
 }
 
-header:not(nav) {
+#mainHeader:not(nav) {
     z-index: 10;
 }
 
 #hbBtn {
+    cursor: pointer;
     width: 35px;
     height: 35px;
+    border: none;
+    background-color: transparent;
 }
 
 #hbBtn div:nth-child(1), #hbBtn div:nth-child(2), #hbBtn div:nth-child(3) {
@@ -82,7 +110,7 @@ header:not(nav) {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.25em;
     z-index: -10;
     transition: .3s;
     white-space: nowrap;
@@ -95,7 +123,7 @@ header:not(nav) {
 
 #navMenu li, #navMenu a {
     padding: .25em .5em;
-    margin: 1em 0;
+    margin: 2em 0;
 }
 
 /* FOOTER */
@@ -103,6 +131,8 @@ header:not(nav) {
 footer {
     padding: 1em;
     text-align: center;
+    border-top: 1px solid var(--color-primary);
+    font-size: small;
 }
 
 /* FORMS */
@@ -110,19 +140,128 @@ footer {
 form div {
     display: grid;
     grid-template-rows: 2;
+    width: clamp(250px, 80%, 300px);
     margin: 0 auto;
     margin-bottom: .5em;
 }
 
-form div input {
+form input {
     padding: .25em .5em;
-    min-width: 250px;
 }
 
-form div button {
+form button {
     background-color: var(--color-background);
     padding: .5em;
     border-radius: 5px;
-    min-width: 250px;
 }
 
+/* MEDIA QUERYS */
+
+@media (min-width:760px) {
+    #hbBtn {
+        display: none;
+    }
+
+    #navMenu {
+        position: static;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    #navMenu ul {
+        display: flex;
+    }
+
+    #navMenu li {
+        margin: 0 .25em;
+        padding: 0;
+    }
+}
+
+#heroImg {
+    width: 100%;
+}
+
+#hero button {
+    display: flex;
+    margin: 0 auto;
+    font-size: 1em;
+    /* padding: .5em 1em; */
+}
+
+/* CARTA */
+
+#cartaHeader {
+    max-width: 100dvw;
+    display: flex;
+    justify-content: center;
+}
+
+#cartaHeader ul {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#cartaHeader li {
+    cursor: pointer;
+    border: 1px solid var(--color-primary);
+    border-radius: 50px;
+    padding: 0 .5em;
+    transition: .3s;
+}
+
+#cartaHeader li:hover {
+    background-color: var(--color-background);
+}
+
+#cartaHeader li.active {
+    background-color: var(--color-background);
+    color: #fff;
+}
+
+#cartaList {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#cartaList li {
+    box-shadow: -3px 3px 5px #666, 3px 3px 5px #666;
+    border-radius: 10px;
+    padding: 2em;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+#cartaList p:last-child {
+    text-align: end;
+}
+
+#cartaList h2 {
+    flex-grow: 1;
+    margin: .5em 0;
+}
+
+#cartaList img {
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    margin: 0 auto;
+    /* box-shadow: 3px 3px 5px #000, -3px 3px 5px #000; */
+    /* border-radius: 10px; */
+}
+
+/* FLASHBAGS */
+
+.error-message {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: red;
+    margin-bottom: .5em;
+}

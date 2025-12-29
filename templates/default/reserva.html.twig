@@ -1,13 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    miResaurante - Inicio
+	miResaurante - Inicio
 {% endblock %}
 
 {% block body %}
 	<main>
 		<section>
-			{{form(reserva_form)}}
+			{{form_start(reserva_form)}}
+			{{form_row(reserva_form.name)}}
+			{{form_row(reserva_form.phone)}}
+			{{form_row(reserva_form.date_time)}}
+			{{form_row(reserva_form.guests)}}
+			{{form_row(reserva_form.submit_button)}}
+			{% for messages in app.flashes %}
+				{% for message in messages %}
+					<small class="flashbag">
+						{{message}}
+					</small>
+				{% endfor %}
+			{% endfor %}
+			<article style="text-align: center; margin-top: 5em;">
+				<p>Si lo prefieres, puedes llamarnos al
+					<a style="color: blue;" href="tel:+34600611622">
+						600611622
+					</a>
+					para hacer tu reserva o
+					<a style="color: blue;" href="https://wa.me/34600611622" target="_blank">
+						enviarnos un WhatsApp.
+					</a>
+				</p>
+				<p>
+					También puedes visitarnos en nuestra ubicación:
+				</p>
+				<iframe style="margin: 2em auto; display: block; height: 450px; width: clamp(300px, 90%, 600px); height: auto; aspect-ratio: 1/1;" src="https://www.google.com/maps/embed?pb=!4v1767007161536!6m8!1m7!1sHwlbr-_HhZgHf1f6tHpgEw!2m2!1d39.99290844966917!2d-0.06391666158555513!3f134.64091140723747!4f-3.6812975645345745!5f0.7820865974627469" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</article>
 		</section>
 	</main>
 {% endblock %}

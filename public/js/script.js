@@ -11,3 +11,4 @@ function toggleMenu() {
     ? navMenu.classList.remove("active") 
     : navMenu.classList.add("active")
 }
+

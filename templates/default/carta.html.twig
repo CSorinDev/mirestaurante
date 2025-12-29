@@ -4,10 +4,24 @@
 	miResaurante - Carta
 {% endblock %}
 
+{% block javascripts %}
+	<script src="js/filterCarta.js" defer></script>
+{% endblock %}
+
 {% block body %}
 	<main>
-		<section>
-			<p>carta page</p>
+		<header id="cartaHeader">
+			<ul>
+				<li>ENTRANTES</li>
+				<li>PRIMEROS</li>
+				<li>SEGUNDOS</li>
+				<li>BEBIDAS</li>
+			</ul>
+		</header>
+		<section id="cartaSection">
+			<ul id="cartaList">
+				
+			</ul>
 		</section>
 	</main>
 {% endblock %}
