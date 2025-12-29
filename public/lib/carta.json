@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Patatas bravas",
+        "price": 7.5,
+        "description": "Patatas fritas caseras con salsa brava y alioli",
+        "category": "entrantes",
+        "image": "../img/carta/bravas.jpg"
+    },
+    {
+        "name": "Calamares a la romana",
+        "price": 10.5,
+        "category": "entrantes"  ,
+        "image": "../img/carta/calamares-a-la-romana.jpg"      
+    }, 
+    {
+        "name": "Paella",
+        "price": 15,
+        "category": "primeros",
+        "image": "../img/carta/paella.jpg"
+    }, 
+    {
+        "name": "Canelones",
+        "price": 12,
+        "category": "primeros",
+        "image": "../img/carta/canelones.jpg"
+    }, 
+    {
+        "name": "Ensalada Mixta",
+        "price": 11,
+        "description": "Lechuga, tomate, cebolla, aceitunas y atún",
+        "category": "primeros",
+        "image": "../img/carta/ensalada-mixta.jpeg"
+    }
+]

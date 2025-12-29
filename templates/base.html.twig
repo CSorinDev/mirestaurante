@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}
-			{% endblock %}
+			{% block title %}{% endblock %}
 		</title>
-		<link rel="icon" href="img/logo.png"> 
-        {% block stylesheets %}
-        <link href="css/global.css" rel="stylesheet" type="text/css" />
-        {% endblock %}
-        {% block javascripts %}
-        <script src="js/script.js" defer></script>
-        {% endblock %}
-		</head>
-		<body>
-			{% include "components/header.html.twig" %}
-			{% block body %}{% endblock %}
-            {% include "components/footer.html.twig" %}
-		</body>
-	</html>
+		<link rel="icon" href="img/logo.png">
+		{% block stylesheets %}
+			<link href="css/global.css" rel="stylesheet" type="text/css"/>
+		{% endblock %}
+		<script src="js/script.js" defer></script>
+		{% block javascripts %}
+		{% endblock %}
+	</head>
+	<body>
+		{% include "components/header.html.twig" %}
+		{% block body %}{% endblock %}
+		{% include "components/footer.html.twig" %}
+	</body>
+</html>

@@ -1,17 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	miResaurante - Inicio
+	miResaurante - Inicio 
 {% endblock %}
 
 {% block body %}
 	<main>
 		<section>
-			{{form(register_form)}}
-            <div style="text-align: center;">
-                ¿Ya tienes una cuenta?
-                <a style="color: blue" href="{{path('login')}}">Inicia Sesión</a>
-            </div>
-        </section>
-    </main>
+			{{ form_start(register_form)}}
+			{# username #}
+			<div>
+				{{ form_label(register_form.username) }}
+				{{ form_widget(register_form.username) }}
+			</div>
+			<small class="error-message">
+				{{ form_errors(register_form.username) }}
+			</small>
+			{# fullname #}
+			<div>
+				{{ form_label(register_form.name) }}
+				{{ form_widget(register_form.name) }}
+			</div>
+			<small class="error-message">
+				{{ form_errors(register_form.name) }}
+			</small>
+			{# email #}
+			<div>
+				{{ form_label(register_form.email) }}
+				{{ form_widget(register_form.email) }}
+			</div>
+			<small class="error-message">
+				{{ form_errors(register_form.email) }}
+			</small>
+			{# phone number #}
+			<div>
+				{{ form_label(register_form.phone) }}
+				{{ form_widget(register_form.phone) }}
+			</div>
+			<small class="error-message">
+				{{ form_errors(register_form.phone) }}
+			</small>
+			{# submit button #}
+			{{ form_row(register_form.submit_button) }}
+			<div style="text-align: center;">
+				¿Ya eres miembro?
+				<a style="color: blue" href="{{path('login')}}">Inicia Sesión</a>
+			</div>
+			{{ form_end(register_form) }}
+		</section>
+	</main>
 {% endblock %}

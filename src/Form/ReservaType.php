@@ -25,7 +25,8 @@ class ReservaType extends AbstractType
             ->add("date_time", DateTimeType::class, [
                 "label" => "Fecha y Hora",
                 "attr" => [
-                    "min" => (new \DateTime())->format("Y-m-d\TH:i" )
+                    "min" => (new \DateTime())->format("Y-m-d\TH:i" ),
+                    "max" => (new \DateTime("+1 month"))->format("Y-m-d\TH:i" )
                 ]
             ])
             ->add("guests", IntegerType::class, [
@@ -34,10 +35,11 @@ class ReservaType extends AbstractType
                     "min" => 1,
                     "step" => 1,
                     "max" => 12,
+                    "value" => 2
                 ]
             ])
-            ->add("reserve", SubmitType::class, [
-                "label" => "Reservar"
+            ->add("submit_button", SubmitType::class, [
+                "label" => "RESERVAR"
             ])
         ;
     }

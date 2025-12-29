@@ -1,13 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    miResaurante - Inicio
+	miResaurante - Inicio
 {% endblock %}
 
 {% block body %}
 	<main>
+		<section style="padding: 0" id="hero">
+			<img id="heroImg" src="./img/hero.webp" alt="imagen miRestaurante">
+			<h1>miRestaurante</h1>
+			<button>
+				<a href="../carta">
+					Ver Carta
+				</a>
+			</button>
+		</section>
 		<section>
-			index page
+			<p>
+				Donde cada plato cuenta una historia. En miRestaurante fusionamos los sabores de la cocina tradicional con técnicas de vanguardia, utilizando solo productos de proximidad y temporada.
+			</p>
 		</section>
 	</main>
 {% endblock %}
