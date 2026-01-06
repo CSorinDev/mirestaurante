@@ -8,18 +8,35 @@
 	<main>
 		<section>
 			{{form_start(reserva_form)}}
-			{{form_row(reserva_form.name)}}
-			{{form_row(reserva_form.phone)}}
-			{{form_row(reserva_form.date_time)}}
-			{{form_row(reserva_form.guests)}}
+			<div>
+				{{form_label(reserva_form.name)}}
+				{{form_widget(reserva_form.name)}}
+			</div>
+			<small class="error-message">
+				{{form_errors(reserva_form.name)}}
+			</small>
+			<div>
+				{{form_label(reserva_form.phone)}}
+				{{form_widget(reserva_form.phone)}}
+			</div>
+			<small class="error-message">
+				{{form_errors(reserva_form.phone)}}
+			</small>
+			<div>
+				{{form_label(reserva_form.date_time)}}
+				{{form_widget(reserva_form.date_time)}}
+			</div>
+			<small class="error-message">
+				{{form_errors(reserva_form.date_time)}}
+			</small>
+			<div>
+				{{form_label(reserva_form.guests)}}
+				{{form_widget(reserva_form.guests)}}
+			</div>
+			<small class="error-message">
+				{{form_errors(reserva_form.guests)}}
+			</small>
 			{{form_row(reserva_form.submit_button)}}
-			{% for messages in app.flashes %}
-				{% for message in messages %}
-					<small class="flashbag">
-						{{message}}
-					</small>
-				{% endfor %}
-			{% endfor %}
 			<article style="text-align: center; margin-top: 5em;">
 				<p>Si lo prefieres, puedes llamarnos al
 					<a style="color: blue;" href="tel:+34600611622">
