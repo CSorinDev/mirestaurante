@@ -25,7 +25,7 @@ class ReservaType extends AbstractType
                 "constraints" => [
                     new NotBlank(message: "El nombre es obligatorio"),
                     new Length(min: 3, minMessage: "El nombre tiene que tener mínimo 3 caracteres"),
-                    new Regex(pattern: "/^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙ]$/", message: "El nombre no puede contener símbolos ni números")
+                    new Regex(pattern: "/^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙ]$/", message: "El nombre no puede contener símbolos ni números"),
                 ],
             ])
             ->add("phone", TelType::class, [
@@ -46,14 +46,14 @@ class ReservaType extends AbstractType
                 ],
             ])
             ->add("guests", IntegerType::class, [
-                "label" => "Número de Comensales",
-                "attr"  => [
+                "label"       => "Número de Comensales",
+                "attr"        => [
                     "min"   => 2,
                     "max"   => 8,
                     "step"  => 1,
                     "value" => 2,
                 ],
-                new Range(min: 2, max: 8, notInRangeMessage: "Reservas de 2 a 8 personas"),
+                "constraints" => [new Range(min: 2, max: 8, notInRangeMessage: "Reservas de 2 a 8 personas")],
             ])
             ->add("submit_button", SubmitType::class, [
                 "label" => "RESERVAR",
