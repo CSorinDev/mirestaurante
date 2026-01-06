@@ -6,28 +6,27 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class LoginType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $firstLetter = "/^[a-zA-Z]/";
-        $minLength6  = "/.{6,}/";
-        $lastChar    = "/[a-zA-Z0-9]$/";
-
         $builder
             ->add('username', TextType::class, [
-                "label"       => "Nombre de usuario",
                 "attr"        => ["autofocus" => "focus"],
+                "label"       => "Nombre de usuario",
                 "constraints" => [
-                    new Regex($firstLetter, "Debe empezar por una letra"),
-                    new Regex($minLength6, "Debe tener mínimo 6 caracteres"),
-                    new Regex($lastChar, "Debe acabar con una letra o un dígito"),
+                    new NotBlank(message: "El usuario es obligatorio"),
+                    new Length(min: 6, minMessage: "Nombre de usuario incorrecto"),
+                    new Regex(pattern: "/[a-zA-Z0-9]$/", message: "Nombre de usuario incorrecto"),
                 ],
             ])
             ->add("password", PasswordType::class, [
                 "label" => "Contraseña",
+                new Length(min: 6, minMessage: "Contraseña incorrecto"),
             ])
             ->add("submit_button", SubmitType::class, [
                 "label" => "Iniciar sesión",
