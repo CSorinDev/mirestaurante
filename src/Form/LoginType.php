@@ -25,8 +25,8 @@ class LoginType extends AbstractType
                 ],
             ])
             ->add("password", PasswordType::class, [
-                "label" => "Contraseña",
-                new Length(min: 6, minMessage: "Contraseña incorrecto"),
+                "label"       => "Contraseña",
+                "constraints" => [new Length(min: 6, minMessage: "Contraseña incorrecta")],
             ])
             ->add("submit_button", SubmitType::class, [
                 "label" => "Iniciar sesión",
