@@ -7,12 +7,9 @@
 			{% block title %}{% endblock %}
 		</title>
 		<link rel="icon" href="img/logo.png">
-		{% block stylesheets %}
-			<link href="css/global.css" rel="stylesheet" type="text/css"/>
-		{% endblock %}
+		<link href="css/global.css" rel="stylesheet" type="text/css"/> {% block stylesheets %}{% endblock %}
 		<script src="js/script.js" defer></script>
-		{% block javascripts %}
-		{% endblock %}
+		{% block javascripts %}{% endblock %}
 	</head>
 	<body>
 		{% include "components/header.html.twig" %}
