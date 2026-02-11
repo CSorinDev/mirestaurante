@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<main>
+		<h1>
+			Hola
+			{{ app.user.getName }}
+		</h1>
+		<section style="display: flex; flex-direction: column; gap: 1em;">
+			<button>Ver mis reservas</button>
+			<button>
+				<a href="/logout">Cerrar Sesión</a>
+			</button>
+		</section>
+	</main>
+{% endblock %}

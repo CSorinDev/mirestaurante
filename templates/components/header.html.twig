@@ -20,11 +20,15 @@
 			</li>
 			{% if app.user %}
 				<li>
-					<a href="/logout">CERRAR SESIÓN</a>
+					<a href="/mi-perfil">
+						{% include "/icons/person.html.twig" %}
+					</a>
 				</li>
 			{% else %}
 				<li>
-					<a href="/login">INICIAR SESIÓN</a>
+					<a href="/login">
+						INICIAR SESIÓN
+					</a>
 				</li>
 			{% endif %}
 		</ul>
