@@ -2,12 +2,18 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="/css/reserva-not-logged.css"/>
+	<link rel="stylesheet" href="/css/reserva-form.css"/>
 {% endblock %}
 
 {% block body %}
 	<main>
+        <h1>Hola {{ app.user.getName }}</h1>
 		{% if app.user %}
-			reserva
+			{{ form_start(form, {'attr': {'class': 'reserva-form'}}) }}
+			{{ form_row(form.fecha) }}
+			{{ form_row(form.hora) }}
+			{{ form_row(form.submit) }}
+			{{ form_end(form) }}
 		{% else %}
 			<section class="reserva-not-logged">
 				<div>
@@ -15,9 +21,13 @@
 					<p>Para garantizar la seguridad de tu cita y gestionar tus servicios, necesitamos identificarte.</p>
 				</div>
 				<div class="reserva-not-logged-links">
-					<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}"><strong>Iniciar Sesión</strong></a>
+					<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}">
+						<strong>Iniciar Sesión</strong>
+					</a>
 					<span>o</span>
-					<a href="{{ path('app_register') }}"><strong>Crea una cuenta nueva</strong></a>
+					<a href="{{ path('app_register') }}">
+						<strong>Crea una cuenta nueva</strong>
+					</a>
 				</div>
 				<div>
 					<p>Al estar registrado podrás:</p>
