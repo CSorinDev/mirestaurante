@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="/css/reserva-not-logged.css"/>
+{% endblock %}
+
+{% block body %}
+	<main>
+		{% if app.user %}
+			reserva
+		{% else %}
+			<section class="reserva-not-logged">
+				<div>
+					<h1>Casi listo para tu reserva</h1>
+					<p>Para garantizar la seguridad de tu cita y gestionar tus servicios, necesitamos identificarte.</p>
+				</div>
+				<div class="reserva-not-logged-links">
+					<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}"><strong>Iniciar Sesión</strong></a>
+					<span>o</span>
+					<a href="{{ path('app_register') }}"><strong>Crea una cuenta nueva</strong></a>
+				</div>
+				<div>
+					<p>Al estar registrado podrás:</p>
+					<small>Gestionar y cancelar tus citas</small>
+					<small>Recibir recordatorios automáticos</small>
+				</div>
+			</section>
+		{% endif %}
+
+	</main>
+{% endblock %}
