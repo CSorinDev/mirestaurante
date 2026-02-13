@@ -1,7 +1,8 @@
 :root {
     --color-primary: #000;
     --color-background: #ff6347;
-    --color-background-hover: #ee5337;
+    --color-background-hover: #dd4125;
+    --shadow-medium: 3px 3px 5px #aaa, -3px 3px 5px #aaa;
 }
 
 * {
@@ -36,6 +37,10 @@ h1 {
     margin-bottom: 1em;
 }
 
+h4 {
+    margin-bottom: .5em;
+}
+
 ul {
     list-style: none;
 }
@@ -45,7 +50,8 @@ a {
     color: var(--color-background-hover);
 }
 
-nav a, button a {
+nav a,
+button a {
     color: #000;
 }
 
@@ -226,7 +232,7 @@ footer {
 }
 
 #cartaList li {
-    box-shadow: -3px 3px 5px #666, 3px 3px 5px #666;
+    box-shadow: var(--shadow-medium);
     border-radius: 10px;
     padding: 2em;
     width: 300px;
@@ -248,8 +254,8 @@ footer {
     max-width: 250px;
     max-height: 250px;
     margin: 0 auto;
-    /* box-shadow: 3px 3px 5px #000, -3px 3px 5px #000; */
-    /* border-radius: 10px; */
+    box-shadow: var(--shadow-medium);
+    border-radius: 10px;
 }
 
 /* FLASHBAGS */
@@ -260,4 +266,67 @@ footer {
     font-style: italic;
     color: red;
     margin-bottom: .5em;
+}
+
+/* MIS RESERVAS */
+
+/* .mis-reservas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+/* ALERTAS FLASH */
+
+.alert-success {
+    color: green;
+}
+
+/* LISTA RESERVAS */
+
+.reservas-list {
+    display: grid;
+    gap: 3em;
+    grid-template-columns: minmax(auto, 720px);
+    place-content: center;
+}
+
+.reservas-list button {
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.reservas-list article {
+    box-shadow: var(--shadow-medium);
+    padding: 2em;
+    border: 1px solid #eee;
+    /* width: 100%; */
+    border-radius: 10px;
+}
+
+.reservas-list article h3 {
+    margin-bottom: .5em;
+}
+
+/* RESERVAS LIST */
+
+.reservas-list-no-reservas {
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+
+.reservas-list-no-reservas button {
+    max-width: fit-content;
+}
+
+/* MI PERFIL */
+
+.mi-perfil-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
 }

@@ -7,13 +7,28 @@
 
 {% block body %}
 	<main>
-        <h1>Hola {{ app.user.getName }}</h1>
 		{% if app.user %}
-			{{ form_start(form, {'attr': {'class': 'reserva-form'}}) }}
-			{{ form_row(form.fecha) }}
-			{{ form_row(form.hora) }}
-			{{ form_row(form.submit) }}
-			{{ form_end(form) }}
+			<h1>Hola
+				{{ app.user.getName }}</h1>
+			{% if reservas %}
+				<section style="display: grid; grid-template-columns: 1fr; place-items: center;">
+					<h4>Ya tienes reservas hechas</h4>
+					<button>
+						<a href="{{ path('app_mis_reservas') }}">Ver reservas</a>
+					</button>
+				</section>
+			{% endif %}
+			<section>
+				{% if reservas %}
+					<h4 style="text-align: center;">Haz una nueva reserva</h4>
+				{% endif %}
+				{{ form_start(form, {'attr': {'class': 'reserva-form'}}) }}
+				{{ form_row(form.fecha) }}
+				{{ form_row(form.hora) }}
+				{{ form_row(form.submit) }}
+				{{ form_end(form) }}
+			</section>
+
 		{% else %}
 			<section class="reserva-not-logged">
 				<div>
@@ -21,13 +36,17 @@
 					<p>Para garantizar la seguridad de tu cita y gestionar tus servicios, necesitamos identificarte.</p>
 				</div>
 				<div class="reserva-not-logged-links">
-					<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}">
-						<strong>Iniciar Sesión</strong>
-					</a>
+					<button>
+						<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}">
+							<strong>Iniciar Sesión</strong>
+						</a>
+					</button>
 					<span>o</span>
-					<a href="{{ path('app_register') }}">
-						<strong>Crea una cuenta nueva</strong>
-					</a>
+					<button>
+						<a href="{{ path('app_register') }}">
+							<strong>Crea una cuenta nueva</strong>
+						</a>
+					</button>
 				</div>
 				<div>
 					<p>Al estar registrado podrás:</p>

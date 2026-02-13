@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<main>
+		<h1>Mis Reservas</h1>
+
+		{% for message in app.flashes('success') %}
+			<p class="alert alert-success">
+				{{ message }}
+			</p>
+		{% endfor %}
+
+		{% if reservas is empty %}
+			<section class="reservas-list-no-reservas">
+				<p>No tienes ninguna reserva todavía.</p>
+				<button>
+					<a href="{{ path('app_reserva') }}" class="btn btn-primary">
+						Hacer una Reserva
+					</a>
+				</button>
+			</section>
+		{% else %}
+			<section class="reservas-list">
+				<button>
+					<a href="{{ path('app_reserva') }}" class="btn btn-primary">
+						Nueva Reserva
+					</a>
+				</button>
+				{% for reserva in reservas %}
+					<article class="reserva-article">
+						<h3>
+							<span>📅 Fecha:
+								{{reserva.fecha|date('d/m/Y')}}
+							</span>
+						</h3>
+						<h4>
+							<span>🕑 Hora:
+								{{ reserva.hora|date('H:i') }}
+							</span>
+						</h4>
+					</article>
+
+				{% endfor %}
+			</section>
+
+
+		{% endif %}
+	</div>
+</main>{% endblock %}
