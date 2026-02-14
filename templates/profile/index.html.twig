@@ -6,9 +6,16 @@
 			Hola
 			{{ app.user.getName }}
 		</h1>
-		<section class="mi-perfil-section">
-				<a class="btn" href="{{path('app_mis_reservas')}}">Ver mis reservas</a>
-				<a class="btn" href="/logout">Cerrar Sesión</a>
+		<section class="flex-center">
+			<a class="btn" href="{{path('app_mis_reservas')}}">Ver mis reservas</a>
+			<a class="btn" href="/logout">Cerrar Sesión</a>
 		</section>
+		{% if isAdmin %}
+			<section class="flex-center">
+				<h1>Zona Administración</h1>
+				<a class="btn" href="{{path('app_admin_categoria_index')}}">Editar Categorias</a>
+				<a class="btn" href="{{path('app_admin_carta_index')}}">Editar Productos</a>
+			<section>
+		{% endif %}
 	</main>
 {% endblock %}

@@ -13,6 +13,7 @@ final class ProfileController extends AbstractController
     {
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
+            'isAdmin' => $this->isGranted('ROLE_ADMIN')
         ]);
     }
 }
