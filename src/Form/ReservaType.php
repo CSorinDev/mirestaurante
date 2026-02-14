@@ -28,6 +28,7 @@ class ReservaType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Reservar',
+                "attr" => ["class" => "btn"]
             ])
         ;
     }
