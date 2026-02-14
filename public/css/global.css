@@ -388,7 +388,7 @@ form {
 
 form div {
     display: grid;
-    width: 90%;
+    width: 90dvw;
     max-width: 350px;
     margin: 0 auto;
 }
