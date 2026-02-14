@@ -14,13 +14,4 @@ final class IndexController extends AbstractController
             'controller_name' => 'DefaultController',
         ]);
     }
-
-    #[Route("/carta", name: "carta")]
-    public function carta(): Response
-    {
-        return $this->render("default/carta.html.twig", [
-            'controller_name' => 'DefaultController',
-        ]);
-    }
-
 }

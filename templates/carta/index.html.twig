@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main>
+    <header id="categoria-header">
+        {% for categoria in categorias %}
+            <button>{{ categoria.nombre }}</button>
+        {% endfor %}
+    </header>
+
+    <section id="carta-section">
+        carta section
+    </section>
+</main>
+{% endblock %}
