@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Categoria
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Añadir nueva categoria</h1>
+
+		{{ include('admin_categoria/_form.html.twig') }}
+
+		<a class="center-link" href="{{ path('app_admin_categoria_index') }}">Volver a la lista</a>
+	</main>
+{% endblock %}

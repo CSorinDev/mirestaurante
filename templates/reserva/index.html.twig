@@ -1,10 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-	<link rel="stylesheet" href="/css/reserva-not-logged.css"/>
-	<link rel="stylesheet" href="/css/reserva-form.css"/>
-{% endblock %}
-
 {% block body %}
 	<main>
 		{% if app.user %}
@@ -13,9 +8,7 @@
 			{% if reservas %}
 				<section style="display: grid; grid-template-columns: 1fr; place-items: center;">
 					<h4>Ya tienes reservas hechas</h4>
-					<button>
-						<a href="{{ path('app_mis_reservas') }}">Ver reservas</a>
-					</button>
+					<a class="btn" href="{{ path('app_mis_reservas') }}">Ver reservas</a>
 				</section>
 			{% endif %}
 			<section>
@@ -31,22 +24,16 @@
 
 		{% else %}
 			<section class="reserva-not-logged">
+				<h1>Casi listo para tu reserva</h1>
+				<p>Para garantizar la seguridad de tu cita y gestionar tus servicios, necesitamos identificarte.</p>
 				<div>
-					<h1>Casi listo para tu reserva</h1>
-					<p>Para garantizar la seguridad de tu cita y gestionar tus servicios, necesitamos identificarte.</p>
-				</div>
-				<div class="reserva-not-logged-links">
-					<button>
-						<a href="{{ path('app_login', {'_target_path': app.request.uri}) }}">
-							<strong>Iniciar Sesión</strong>
-						</a>
-					</button>
+					<a class="btn" href="{{ path('app_login', {'_target_path': app.request.uri}) }}">
+						<strong>Iniciar Sesión</strong>
+					</a>
 					<span>o</span>
-					<button>
-						<a href="{{ path('app_register') }}">
-							<strong>Crea una cuenta nueva</strong>
-						</a>
-					</button>
+					<a class="btn" href="{{ path('app_register') }}">
+						<strong>Crea una cuenta nueva</strong>
+					</a>
 				</div>
 				<div>
 					<p>Al estar registrado podrás:</p>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categoria index
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Categoria index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Orden</th>
+					<th>Nombre</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for categorium in categorias %}
+					<tr>
+						<td>{{ categorium.orden }}</td>
+						<td>{{ categorium.nombre }}</td>
+						<td>
+								<a href="{{ path('app_admin_categoria_show', {'id': categorium.id}) }}">Ver</a>
+								<a href="{{ path('app_admin_categoria_edit', {'id': categorium.id}) }}">Editar</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a class="btn center-link" href="{{ path('app_admin_categoria_new') }}">Añadir categoria</a>
+	</main>
+{% endblock %}

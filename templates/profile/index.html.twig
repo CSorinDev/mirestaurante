@@ -7,12 +7,8 @@
 			{{ app.user.getName }}
 		</h1>
 		<section class="mi-perfil-section">
-			<button>
-				<a href="{{path('app_mis_reservas')}}">Ver mis reservas</a>
-			</button>
-			<button>
-				<a href="/logout">Cerrar Sesión</a>
-			</button>
+				<a class="btn" href="{{path('app_mis_reservas')}}">Ver mis reservas</a>
+				<a class="btn" href="/logout">Cerrar Sesión</a>
 		</section>
 	</main>
 {% endblock %}
