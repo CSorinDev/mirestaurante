@@ -27,7 +27,13 @@
 				</tr>
 				<tr>
 					<th>Imagen</th>
-					<td>{{ carta.imagen }}</td>
+					<td>
+						{% if carta.imagen %}
+							<img src="{{ asset('uploads/productos/' ~ carta.imagen) }}" alt="Imagen de {{ carta.nombre }}" style="max-width: 200px; height: auto; border-radius: 8px;">
+						{% else %}
+							<span class="text-muted">Sin imagen disponible</span>
+						{% endif %}
+					</td>
 				</tr>
 			</tbody>
 		</table>

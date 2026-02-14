@@ -1,14 +1,15 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Carta;
 use App\Entity\Categoria;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class CartaType extends AbstractType
 {
@@ -18,14 +19,29 @@ class CartaType extends AbstractType
             ->add('nombre')
             ->add('descripcion')
             ->add('precio')
-            ->add('imagen')
+            // ->add('imagen')
+            ->add('foto_archivo', FileType::class, [
+                'label'       => "Imagen del producto (jpg o png)",
+                'mapped'      => false,
+                'required'    => false,
+                'constraints' => [
+                    new File(
+                        maxSize: '2M',
+                        mimeTypes: [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        mimeTypesMessage: 'Por favor, sube una imagen válida (JPG o PNG)'
+                    ),
+                ],
+            ])
             ->add('categoria', EntityType::class, [
-                'class' => Categoria::class,
+                'class'        => Categoria::class,
                 'choice_label' => 'nombre',
             ])
             ->add('submit', SubmitType::class, [
-                "label" => "Añadir",
-                "attr" => ["class" => "btn"]
+                "label" => 'Guardar',
+                "attr"  => ["class" => "btn"],
             ])
         ;
     }

@@ -83,15 +83,16 @@ class Carta
         return $this;
     }
 
-    public function getCategoria(): ?categoria
+    public function getCategoria(): ?Categoria
     {
         return $this->categoria;
     }
 
-    public function setCategoria(?categoria $categoria): static
+    public function setCategoria(?Categoria $categoria): static
     {
         $this->categoria = $categoria;
 
         return $this;
     }
+
 }

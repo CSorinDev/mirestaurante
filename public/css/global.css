@@ -277,6 +277,7 @@ footer {
     padding: 1em;
     border-radius: 10px;
     width: 280px;
+    height: 350px;
     background: linear-gradient(45deg, #fff, #eee);
     display: flex;
     flex-direction: column;
@@ -284,11 +285,13 @@ footer {
 }
 
 .carta-item img {
-    max-width: 90%;
+    max-width: 95%;
     display: block;
     margin: 0 auto;
     box-shadow: var(--shadow-medium);
     border-radius: 10px;
+    aspect-ratio: 3/2;
+    object-fit: cover;
 }
 
 .carta-item .descripcion {
@@ -395,6 +398,11 @@ form div input, form div textarea, form div select {
     margin-bottom: 1em;
 }
 
+form div input[type='file'] {
+    padding: 0;
+    margin: 1em 0;
+}
+
 form~section {
     display: flex;
     justify-content: center;
@@ -463,6 +471,7 @@ form input[type="checkbox"] {
     width: 90dvw;
     max-width: fit-content;
     overflow-x: auto;
+    scrollbar-width: none;
     margin: 1em auto;
 }
 
