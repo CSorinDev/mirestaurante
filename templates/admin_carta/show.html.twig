@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carta
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Producto</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ carta.id }}</td>
+				</tr>
+				<tr>
+					<th>Nombre</th>
+					<td>{{ carta.nombre }}</td>
+				</tr>
+				<tr>
+					<th>Descripcion</th>
+					<td>{{ carta.descripcion }}</td>
+				</tr>
+				<tr>
+					<th>Precio</th>
+					<td>{{ carta.precio }}</td>
+				</tr>
+				<tr>
+					<th>Imagen</th>
+					<td>{{ carta.imagen }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<section class="flex-center">
+			<a class="btn" href="{{ path('app_admin_carta_edit', {'id': carta.id}) }}">Editar</a>
+			<a href="{{ path('app_admin_carta_index') }}">Volver a la lista de productos</a>
+		</section>
+	</main>
+{% endblock %}

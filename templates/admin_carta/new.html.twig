@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Carta
+{% endblock %}
+
+{% block body %}
+	<main>
+		<h1>Añadir Producto</h1>
+
+		{{ include('admin_carta/_form.html.twig') }}
+
+		<section class="flex-center">
+			<a href="{{ path('app_admin_carta_index') }}">Volver a la lista de productos</a>
+		</section>
+	</main>
+{% endblock %}

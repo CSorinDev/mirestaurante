@@ -5,34 +5,36 @@
 
 {% block body %}
 	<main>
-		<h1>Categoria index</h1>
+		<h1>Categorías</h1>
+
+		<a class="btn center-link" href="{{ path('app_admin_categoria_new') }}">Añadir Categoría</a>
 
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Orden</th>
 					<th>Nombre</th>
-					<th>actions</th>
+					<th>Orden</th>
+					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for categorium in categorias %}
 					<tr>
-						<td>{{ categorium.orden }}</td>
 						<td>{{ categorium.nombre }}</td>
+						<td>{{ categorium.orden }}</td>
 						<td>
-								<a href="{{ path('app_admin_categoria_show', {'id': categorium.id}) }}">Ver</a>
-								<a href="{{ path('app_admin_categoria_edit', {'id': categorium.id}) }}">Editar</a>
+								<a class='emoji' href="{{ path('app_admin_categoria_show', {'id': categorium.id}) }}">🔍</a>
+								<a class='emoji' href="{{ path('app_admin_categoria_edit', {'id': categorium.id}) }}">✏️</a>
+								<a class='emoji' href="{{ path('app_admin_categoria_delete', {'id': categorium.id}) }}">❌</a>
 						</td>
 					</tr>
 				{% else %}
 					<tr>
-						<td colspan="3">no records found</td>
+						<td colspan="3">No hay categorias disponibles</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
 
-		<a class="btn center-link" href="{{ path('app_admin_categoria_new') }}">Añadir categoria</a>
 	</main>
 {% endblock %}

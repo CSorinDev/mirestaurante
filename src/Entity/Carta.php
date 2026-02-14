@@ -28,7 +28,7 @@ class Carta
 
     #[ORM\ManyToOne(inversedBy: 'cartaItems')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?categoria $categoria = null;
+    private ?Categoria $categoria = null;
 
     public function getId(): ?int
     {

@@ -358,14 +358,14 @@ footer {
 
 table {
     padding: 1em;
-    box-shadow: var(--shadow-medium);
+    /* box-shadow: var(--shadow-medium); */
     margin: 0 auto;
     margin-bottom: 2em;
     border-radius: 10px;
 }
 
-table td {
-    padding: .5em;
+table th, table td {
+    text-align: start;
 }
 
 table button {
@@ -376,9 +376,9 @@ table~button {
     margin: 0 auto;
 }
 
-table a {
+/* table a {
     margin: 0 1em;
-}
+} */
 
 form {
     margin-bottom: 2em;
@@ -391,7 +391,7 @@ form div {
     margin: 0 auto;
 }
 
-form div input {
+form div input, form div textarea, form div select {
     padding: .5em;
     margin-bottom: 1em;
 }
@@ -480,4 +480,10 @@ form input[type="checkbox"] {
 #categoria-header button:hover {
     background-color: var(--color-background-hover);
     color: white;
+}
+
+.emoji {
+    all: unset;
+    cursor: pointer;
+    padding: .5em;
 }
