@@ -38,7 +38,7 @@ section {
 }
 
 section:not(#hero) {
-    max-width: 1024px;
+    max-width: 1240px;
     margin: 0 auto;
     margin-bottom: 5em;
 }
@@ -263,6 +263,36 @@ footer {
     margin: 0 auto;
     box-shadow: var(--shadow-medium);
     border-radius: 10px;
+}
+
+#carta-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.carta-item {
+    box-shadow: var(--shadow-medium);
+    padding: 1em;
+    border-radius: 10px;
+    width: 280px;
+    background: linear-gradient(45deg, #fff, #eee);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.carta-item img {
+    max-width: 90%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: var(--shadow-medium);
+    border-radius: 10px;
+}
+
+.carta-item .descripcion {
+    flex: 1;
 }
 
 /* FLASHBAGS */

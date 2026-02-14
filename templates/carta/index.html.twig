@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<main>
-    <header id="categoria-header">
-        {% for categoria in categorias %}
-            <button>{{ categoria.nombre }}</button>
-        {% endfor %}
-    </header>
+{% block stylesheets %}
+<script src="{{ asset('js/handleCarta.js') }}" defer></script>
+{% endblock %}
 
-    <section id="carta-section">
-        carta section
-    </section>
-</main>
+
+{% block body %}
+	<main>
+		<header id="categoria-header">
+			{% for categoria in categorias %}
+				<button value="{{categoria.nombre}}">{{ categoria.nombre }}</button>
+			{% endfor %}
+		</header>
+
+		<section id="carta-section">
+			<p>Cargando la carta...</p>
+		</section>
+	</main>
 {% endblock %}
