@@ -7,11 +7,12 @@
     "prefer-stable": true,
     "require": {
         "php": ">=8.4",
-        "ext-pdo_mysql": "*",
-        "ext-intl": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-intl": "*",
+        "ext-pdo_mysql": "*",
         "doctrine/doctrine-bundle": "^3.2.2",
+        "doctrine/doctrine-fixtures-bundle": "^4.3",
         "doctrine/doctrine-migrations-bundle": "^4.0",
         "doctrine/orm": "^3.6.2",
         "symfony/asset": "8.0.*",
@@ -31,7 +32,6 @@
         "twig/twig": "^2.12|^3.23"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^4.3",
         "symfony/maker-bundle": "^1.66"
     },
     "config": {
