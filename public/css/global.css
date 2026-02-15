@@ -347,7 +347,7 @@ footer {
     place-content: center;
 }
 
-.reservas-list button {
+.reservas-list .btn {
     max-width: fit-content;
     margin: 0 auto;
 }
