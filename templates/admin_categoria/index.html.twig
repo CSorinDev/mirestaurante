@@ -1,40 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categoria index
-{% endblock %}
-
 {% block body %}
 	<main>
 		<h1>Categorías</h1>
 
 		<a class="btn center-link" href="{{ path('app_admin_categoria_new') }}">Añadir Categoría</a>
 
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Orden</th>
-					<th>Acciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for categorium in categorias %}
+		{% if categorias %}
+			<table>
+				<thead>
 					<tr>
-						<td>{{ categorium.nombre }}</td>
-						<td>{{ categorium.orden }}</td>
-						<td>
-								<a class='emoji' href="{{ path('app_admin_categoria_show', {'id': categorium.id}) }}">🔍</a>
-								<a class='emoji' href="{{ path('app_admin_categoria_edit', {'id': categorium.id}) }}">✏️</a>
-								<a class='emoji' href="{{ path('app_admin_categoria_delete', {'id': categorium.id}) }}">❌</a>
-						</td>
+						<th>Nombre</th>
+						<th>Orden</th>
+						<th>Acciones</th>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="3">No hay categorias disponibles</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
+				</thead>
+				<tbody>
+					{% for categoria in categorias %}
+						<tr>
+							<td>{{ categoria.nombre }}</td>
+							<td>{{ categoria.orden }}</td>
+							<td>
+								<a class='emoji' href="{{ path('app_admin_categoria_show', {'id': categoria.id}) }}">🔍</a>
+								<a class='emoji' href="{{ path('app_admin_categoria_edit', {'id': categoria.id}) }}">✏️</a>
+								<a class='emoji' href="{{ path('app_admin_categoria_delete', {'id': categoria.id}) }}">❌</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% else %}
+			<br>
+			<p>No hay categorias disponibles</p>
+		{% endif %}
 	</main>
 {% endblock %}

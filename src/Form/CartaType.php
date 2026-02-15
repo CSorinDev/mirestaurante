@@ -7,6 +7,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
@@ -16,10 +18,13 @@ class CartaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nombre')
+            ->add('nombre', TextType::class, [
+                'required' => true
+            ])
             ->add('descripcion')
-            ->add('precio')
-            // ->add('imagen')
+            ->add('precio', NumberType::class, [
+                'required' => true
+            ])
             ->add('foto_archivo', FileType::class, [
                 'label'       => "Imagen del producto (jpg o png)",
                 'mapped'      => false,
@@ -38,6 +43,8 @@ class CartaType extends AbstractType
             ->add('categoria', EntityType::class, [
                 'class'        => Categoria::class,
                 'choice_label' => 'nombre',
+                'placeholder' => "Selecciona una categoría",
+                'required' => true
             ])
             ->add('submit', SubmitType::class, [
                 "label" => 'Guardar',

@@ -1,12 +1,14 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\CartaRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CartaRepository::class)]
+#[UniqueEntity(fields: ['nombre'], message: 'El nombre tiene que ser único')]
 class Carta
 {
     #[ORM\Id]
@@ -14,6 +16,7 @@ class Carta
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message: "El nombre del producto es obligatorio")]
     #[ORM\Column(length: 30, unique: true)]
     private ?string $nombre = null;
 
@@ -21,6 +24,8 @@ class Carta
     private ?string $descripcion = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "El precio es obligatorio")]
+    #[Assert\Positive(message: 'El precio debe ser positivo')]
     private ?float $precio = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -28,6 +33,7 @@ class Carta
 
     #[ORM\ManyToOne(inversedBy: 'cartaItems')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: "La categoría es obligatoria.")]
     private ?Categoria $categoria = null;
 
     public function getId(): ?int

@@ -7,74 +7,43 @@
 	<main>
 		<section>
 			<h1>Lista de Productos</h1>
-			<a class="btn center-link" href="{{ path('app_admin_carta_new') }}">Añadir nuevo producto</a>
+			<a class="btn center-link" href="{{ path('app_admin_carta_new') }}">
+				Añadir nuevo producto
+			</a>
 			<br>
-			<table>
-				<thead>
-					<tr>
-						<th>
-							Nombre
-						</th>
-						<th>
-							Acciones
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for producto in cartas %}
-						<tr>
-							<td>
-								{{ producto.nombre }}
-							</td>
-							<td>
-								<a class='emoji' href="{{ path('app_admin_carta_show', {'id': producto.id}) }}">🔍</a>
-								<a class='emoji' href="{{ path('app_admin_carta_edit', {'id': producto.id}) }}">✏️</a>
-								{{ include('admin_carta/_delete_form.html.twig', {'carta': producto}) }}
 
-							</td>
+			{% if cartas %}
+				<table>
+					<thead>
+						<tr>
+							<th>
+								Nombre
+							</th>
+							<th>
+								Acciones
+							</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{% for producto in cartas %}
+							<tr>
+								<td>
+									{{ producto.nombre }}
+								</td>
+								<td>
+									<a class='emoji' href="{{ path('app_admin_carta_show', {'id': producto.id}) }}">🔍</a>
+									<a class='emoji' href="{{ path('app_admin_carta_edit', {'id': producto.id}) }}">✏️</a>
+									{{ include('admin_carta/_delete_form.html.twig', {'carta': producto}) }}
+
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			{% else %}
+				<p>No hay productos en la base de datos</p>
+			{% endif %}
 		</section>
 	</main>
 {% endblock %}
-
-{# {% for carta in cartas %} #}
-
-
-{# <table class="table">
-				<tbody>
-					<tr>
-						<th>Nombre</th>
-						<td>{{ carta.nombre }}</td>
-					</tr>
-					<tr>
-						<th>Descripción</th>
-						<td>{{ carta.descripcion }}</td>
-					</tr>
-					<tr>
-						<th>Precio</th>
-						<td>{{ carta.precio }}</td>
-					</tr>
-					<tr>
-						<th>Imagen</th>
-						<td>{{ carta.imagen }}</td>
-					</tr>
-					<tr>
-						<th>Acciones</th>
-						<td>
-							<a class="emoji" href="{{ path('app_admin_carta_show', {'id': carta.id}) }}">🔍</a>
-							<a class="emoji" href="{{ path('app_admin_carta_edit', {'id': carta.id}) }}">✏️</a>
-							<a class="emoji" href="{{ path('app_admin_carta_delete', {'id': carta.id}) }}">❌</a>
-
-						</td>
-					</tr>
-				</tbody>
-			</tbody>
-		</table> #}
-{# {% else %}
-		<div class="flex-center">
-			<p>No hay productos en la carta</p>
-		</div>
-	{% endfor %} #}
