@@ -6,8 +6,12 @@ use App\Repository\CategoriaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoriaRepository::class)]
+#[UniqueEntity(['nombre'], message: 'El nombre tiene que ser único')]
+#[UniqueEntity(['orden'], message: 'Ya hay una categoría con ese número de orden')]
 class Categoria
 {
     #[ORM\Id]
@@ -16,9 +20,12 @@ class Categoria
     private ?int $id = null;
 
     #[ORM\Column(length: 30)]
+    #[Assert\NotBlank(message: 'El campo nombre es obligatorio')]
     private ?string $nombre = null;
 
     #[ORM\Column(unique: true)]
+    #[Assert\Positive(message: 'El número de orden tiene que ser positivo')]
+    #[Assert\NotBlank(message: 'El campo orden es obligatorio')]
     private ?int $orden = null;
 
     /**
