@@ -53,6 +53,9 @@ class Reserva
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?int $comensales = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Reserva
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getComensales(): ?int
+    {
+        return $this->comensales;
+    }
+
+    public function setComensales(int $comensales): static
+    {
+        $this->comensales = $comensales;
 
         return $this;
     }
