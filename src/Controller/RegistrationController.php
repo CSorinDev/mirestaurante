@@ -34,23 +34,26 @@ class RegistrationController extends AbstractController
 
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+            // PONGO QUE EL USUARIO ESTÁ VERIFICADO POR DEFECTO
             $user->setIsVerified(true);
 
             $entityManager->persist($user);
             $entityManager->flush();
 
+            // ESTO NO FUNCIONA PORQUE RAILWAY BLOQUEA EL SERVICIO STMP EN LA CAPA GRATUITA
+
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('sorcra@alu.edu.gva.es', 'miRestaurante'))
-                    ->to((string) $user->getEmail())
-                    ->subject('Por favor confirma tu email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+            // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            //     (new TemplatedEmail())
+            //         ->from(new Address('sorcra@alu.edu.gva.es', 'miRestaurante'))
+            //         ->to((string) $user->getEmail())
+            //         ->subject('Por favor confirma tu email')
+            //         ->htmlTemplate('registration/confirmation_email.html.twig')
+            // );
 
-            // do anything else you need here, like send an email
+            // // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_index');
+            // return $this->redirectToRoute('app_index');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -58,25 +61,25 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request): Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+    // #[Route('/verify/email', name: 'app_verify_email')]
+    // public function verifyUserEmail(Request $request): Response
+    // {
+    //     $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            /** @var User $user */
-            $user = $this->getUser();
-            $this->emailVerifier->handleEmailConfirmation($request, $user);
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $exception->getReason());
+    //     // validate email confirmation link, sets User::isVerified=true and persists
+    //     try {
+    //         /** @var User $user */
+    //         $user = $this->getUser();
+    //         $this->emailVerifier->handleEmailConfirmation($request, $user);
+    //     } catch (VerifyEmailExceptionInterface $exception) {
+    //         $this->addFlash('verify_email_error', $exception->getReason());
 
-            return $this->redirectToRoute('app_register');
-        }
+    //         return $this->redirectToRoute('app_register');
+    //     }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Tu correo ha sido verificado');
+    //     // @TODO Change the redirect on success and handle or remove the flash message in your templates
+    //     $this->addFlash('success', 'Tu correo ha sido verificado');
 
-        return $this->redirectToRoute('app_register');
-    }
+    //     return $this->redirectToRoute('app_register');
+    // }
 }
