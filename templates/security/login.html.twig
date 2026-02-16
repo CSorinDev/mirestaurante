@@ -2,6 +2,10 @@
 
 {% block body %}
 	<main>
+		{% for message in app.flashes('alert-success') %}
+			<p class="alert-success">{{message}}</p>
+		{% endfor %}
+
 		{% if app.user %}
 			<div class="mb-3">
 				Hola

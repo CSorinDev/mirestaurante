@@ -39,8 +39,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', "¡Felicidades! Te has registrado correctamente");
-            return $this->redirectToRoute('app_my_profile');
+            $this->addFlash('alert-success', "¡Felicidades! Te has registrado correctamente");
+            return $this->redirectToRoute('app_login');
 
             // ESTO NO FUNCIONA PORQUE RAILWAY BLOQUEA EL SERVICIO STMP EN LA CAPA GRATUITA
 
