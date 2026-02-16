@@ -9,9 +9,11 @@
 
 			<section>
 				{% if reservas %}
-					<h4>Ya tienes reservas hechas</h4>
-					<a class="btn" href="{{ path('app_mis_reservas') }}">Ver  mis reservas</a>
-					<h4 style="text-align: center;">Haz una nueva reserva</h4>
+					<section class="flex-center">
+						<h4>Ya tienes reservas hechas</h4>
+						<a class="btn" href="{{ path('app_mis_reservas') }}">Ver  mis reservas</a>
+					</section>
+						<h4 style="text-align: center;">Haz una nueva reserva</h4>
 				{% else %}
 					<h3>Reserva ahora tu mesa</h3>
 				{% endif %}

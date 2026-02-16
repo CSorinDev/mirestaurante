@@ -30,7 +30,7 @@
 							<td>
 								{{ reserva.fecha | format_datetime(pattern="EEEE", locale="es") }}
 								{{ reserva.fecha | date('d/m/Y') }}
-								{{ reserva.fecha | date('H:i') }}
+								{{ reserva.hora | date('H:i') }}
 							</td>
 							<td>
 								{{ reserva.comensales }}
