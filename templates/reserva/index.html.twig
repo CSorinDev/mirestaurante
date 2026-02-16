@@ -4,23 +4,27 @@
 	<main>
 		{% if app.user %}
 			<h1>Hola
-				{{ app.user.getName }}</h1>
+				{{ app.user.getName }}
+			</h1>
+
 			{% if reservas %}
 				<section style="display: grid; grid-template-columns: 1fr; place-items: center;">
 					<h4>Ya tienes reservas hechas</h4>
 					<a class="btn" href="{{ path('app_mis_reservas') }}">Ver reservas</a>
 				</section>
+				<section>
+					{% if reservas %}
+						<h4 style="text-align: center;">Haz una nueva reserva</h4>
+					{% endif %}
+					{{ form_start(form) }}
+					{{ form_row(form.fecha) }}
+					{{ form_row(form.hora) }}
+					{{ form_row(form.comensales) }}
+					{{ form_row(form.submit) }}
+					{{ form_end(form) }}
+				</section>
 			{% endif %}
-			<section>
-				{% if reservas %}
-					<h4 style="text-align: center;">Haz una nueva reserva</h4>
-				{% endif %}
-				{{ form_start(form, {'attr': {'class': 'reserva-form'}}) }}
-				{{ form_row(form.fecha) }}
-				{{ form_row(form.hora) }}
-				{{ form_row(form.submit) }}
-				{{ form_end(form) }}
-			</section>
+
 
 		{% else %}
 			<section class="reserva-not-logged">
@@ -42,6 +46,5 @@
 				</div>
 			</section>
 		{% endif %}
-
 	</main>
 {% endblock %}

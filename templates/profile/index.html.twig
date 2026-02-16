@@ -12,9 +12,10 @@
 		</section>
 		{% if isAdmin %}
 			<section class="flex-center">
-				<h1>Zona Administración</h1>
-				<a class="btn" href="{{path('app_admin_categoria_index')}}">Editar Categorias</a>
-				<a class="btn" href="{{path('app_admin_carta_index')}}">Editar Productos</a>
+				<h1>Administración</h1>
+				<a class="btn" href="{{path('app_admin_categoria_index')}}">Categorias</a>
+				<a class="btn" href="{{path('app_admin_carta_index')}}">Productos</a>
+				<a class="btn" href="{{path('app_admin_reserva') }}">Reservas</a>
 			<section>
 		{% endif %}
 	</main>

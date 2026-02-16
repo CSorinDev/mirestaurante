@@ -31,6 +31,12 @@
 					</a>
 				</li>
 			{% endif %}
+
+			{% if app.user %}
+				{% if 'ROLE_ADMIN' in app.user.roles %}
+					<p>admin</p>
+				{% endif %}
+			{% endif %}
 		</ul>
 	</nav>
 </header>

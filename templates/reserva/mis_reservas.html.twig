@@ -18,28 +18,36 @@
 				</a>
 			</section>
 		{% else %}
-			<section class="reservas-list">
-				<a class="btn" href="{{ path('app_reserva') }}" class="btn btn-primary">
-					Nueva Reserva
-				</a>
-				{% for reserva in reservas %}
-					<article class="reserva-article">
-						<h3>
-							<span>📅 Fecha:
-								{{reserva.fecha|date('d/m/Y')}}
-							</span>
-						</h3>
-						<h4>
-							<span>🕑 Hora:
-								{{ reserva.hora|date('H:i') }}
-							</span>
-						</h4>
-					</article>
-
-				{% endfor %}
+			<section>
+				<table class="center-table">
+					<tr>
+						<th>Fecha</th>
+						<th>Día</th>
+						<th>Hora</th>
+						<th>Comensales</th>
+						<th>Cancelar</th>
+					</tr>
+					{% for reserva in reservas %}
+						<tr>
+							<td>
+								{{ reserva.fecha | date('d/m/Y') }}
+							</td>
+							<td>
+								{{ reserva.fecha | format_datetime(pattern="EEEE", locale="es") }}
+							</td>
+							<td>
+								{{ reserva.hora | date('H:i') }}
+							</td>
+							<td>
+								{{ reserva.comensales }}
+							</td>
+							<td>
+								{{ include('/reserva/_delete_form.html.twig') }}
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
 			</section>
-
-
 		{% endif %}
 	</div>
 </main>{% endblock %}

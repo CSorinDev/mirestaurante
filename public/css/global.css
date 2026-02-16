@@ -326,31 +326,7 @@ footer {
 
 .alert-success {
     color: green;
-}
-
-/* LISTA RESERVAS */
-
-.reservas-list {
-    display: grid;
-    gap: 3em;
-    grid-template-columns: minmax(auto, 720px);
-    place-content: center;
-}
-
-.reservas-list .btn {
-    max-width: fit-content;
-    margin: 0 auto;
-}
-
-.reservas-list article {
-    box-shadow: var(--shadow-medium);
-    padding: 2em;
-    border: 1px solid #eee;
-    border-radius: 10px;
-}
-
-.reservas-list article h3 {
-    margin-bottom: .5em;
+    text-align: center;
 }
 
 /* RESERVAS LIST */
@@ -377,6 +353,7 @@ table {
 table th,
 table td {
     text-align: start;
+    padding: .5em;
 }
 
 table button {
@@ -436,6 +413,11 @@ form button {
     display: block;
     width: fit-content;
     margin: 0 auto;
+}
+
+.center-table td, .center-table th {
+    text-align: center;
+    /* font-size: 18px; */
 }
 
 
