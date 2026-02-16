@@ -29,12 +29,25 @@ class ReservaType extends AbstractType
                         '15:00' => new \DateTime('15:00'),
                         '15:30' => new \DateTime('15:30'),
                     ],
-                    'Cena (20:00 - 22:00)'     => [
+                    'Cena (20:00 - 22:00)'   => [
                         '20:00' => new \DateTime('20:00'),
                         '20:30' => new \DateTime('20:30'),
                         '21:00' => new \DateTime('21:00'),
                         '21:30' => new \DateTime('21:30'),
                     ],
+                ],
+            ])
+            ->add('comensales', ChoiceType::class, [
+                'label' => 'Comensales',
+                'choices' => [
+                    "1" => 1,
+                    "2" => 2,
+                    "3" => 3,
+                    "4" => 4,
+                    "5" => 5,
+                    "6" => 6,
+                    "7" => 7,
+                    "8" => 8,
                 ],
             ])
             ->add('submit', SubmitType::class, [
