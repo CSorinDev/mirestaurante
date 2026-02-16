@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Reserva;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,18 +16,30 @@ class ReservaType extends AbstractType
         $builder
             ->add('fecha', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Fecha de la reserva',
-                'attr' => [
-                    'min' => (new \DateTime())->format('Y-m-d'),
-                ]
+                'label'  => 'Fecha de la reserva',
+                'attr'   => [
+                    'min' => (new \DateTime())->modify('+1 day')->format('Y-m-d'),
+                ],
             ])
-            ->add('hora', TimeType::class, [
-                'widget' => 'single_text',
-                'label' => 'Hora',
+            ->add('hora', ChoiceType::class, [
+                'choices' => [
+                    'Comida (14:00 - 16:00)' => [
+                        '14:00' => new \DateTime('14:00'),
+                        '14:30' => new \DateTime('14:30'),
+                        '15:00' => new \DateTime('15:00'),
+                        '15:30' => new \DateTime('15:30'),
+                    ],
+                    'Cena (20:00 - 22:00)'     => [
+                        '20:00' => new \DateTime('20:00'),
+                        '20:30' => new \DateTime('20:30'),
+                        '21:00' => new \DateTime('21:00'),
+                        '21:30' => new \DateTime('21:30'),
+                    ],
+                ],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Reservar',
-                "attr" => ["class" => "btn"]
+                "attr"  => ["class" => "btn"],
             ])
         ;
     }

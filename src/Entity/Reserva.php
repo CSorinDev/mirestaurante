@@ -1,10 +1,11 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\ReservaRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 #[ORM\Entity(repositoryClass: ReservaRepository::class)]
 class Reserva
@@ -15,12 +16,40 @@ class Reserva
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\GreaterThan(
+        value: "today",
+        message: "La reserva debe realizarse con al menos un día de antelación"
+    )]
     private ?\DateTime $fecha = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type : Types::TIME_MUTABLE)]
     private ?\DateTime $hora = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reservas')]
+    #[Assert\Callback]
+    public function validateHora(ExecutionContextInterface $context)
+    {
+        if ($this->hora) {
+            return;
+        }
+
+        $h = $this->hora->format("H:i");
+
+        $comidaInicio = '14:00';
+        $comidaFin    = "16:00";
+        $cenaInicio   = "20:00";
+        $cenaFin      = "22:00";
+
+        $horaValidaComida = ($h >= $comidaInicio && $h <= $comidaFin);
+        $horaCenaValida   = ($h >= $cenaInicio && $h <= $cenaFin);
+
+        if (! $horaValidaComida && ! $horaCenaValida) {
+            $context->buildViolation('Solo aceptamos reservas de 14:00 a 16:00 y de 20:00 a 22:00')
+                ->atPath('hora')
+                ->addViolation();
+        }
+    }
+
+    #[ORM\ManyToOne(inversedBy : 'reservas')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
