@@ -10,8 +10,8 @@
             <br>
 			<nav class="admin-actions">
 				<a class="btn center-link" href="{{ path('app_admin_reserva') }}">Ver Reservas</a>
-				<a class="btn center-link" href="">Modificar Productos</a>
-				<a class="btn center-link" href="">Modificar Categorías</a>
+				<a class="btn center-link" href="{{ path('app_admin_carta_index') }}">Modificar Productos</a>
+				<a class="btn center-link" href="{{ path('app_admin_categoria_index') }}">Modificar Categorías</a>
 			</nav>
 		{% else %}
 			<h1>Acceso Denegado</h1>
