@@ -28,7 +28,7 @@ class Reserva
     #[Assert\Callback]
     public function validateHora(ExecutionContextInterface $context)
     {
-        if ($this->hora) {
+        if (null === $this->hora) {
             return;
         }
 

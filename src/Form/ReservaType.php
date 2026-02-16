@@ -16,7 +16,7 @@ class ReservaType extends AbstractType
         $builder
             ->add('fecha', DateType::class, [
                 'widget' => 'single_text',
-                'label'  => 'Fecha de la reserva',
+                'label'  => 'Fecha',
                 'attr'   => [
                     'min' => (new \DateTime())->modify('+1 day')->format('Y-m-d'),
                 ],

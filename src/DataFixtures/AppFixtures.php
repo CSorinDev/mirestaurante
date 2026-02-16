@@ -71,7 +71,7 @@ class AppFixtures extends Fixture
                 'img'       => 'pizza-carbonara.webp',
             ],
             [
-                'nombre'    => 'Refresco de Cola',
+                'nombre'    => 'Coca Cola',
                 'precio'    => 2.50,
                 'categoria' => 'Bebidas',
                 'desc'      => 'Lata 33cl.',

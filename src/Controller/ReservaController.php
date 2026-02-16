@@ -16,8 +16,6 @@ final class ReservaController extends AbstractController
     #[Route('/reserva', name: 'app_reserva')]
     public function index(Request $request, EntityManagerInterface $em, ReservaRepository $reservaRepository): Response
     {
-        // $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-        
         $reserva = new Reserva();
         $form = $this->createForm(ReservaType::class, $reserva);
         $form->handleRequest($request);
@@ -35,7 +33,7 @@ final class ReservaController extends AbstractController
 
             $this->addFlash('success', '¡Reserva realizada con éxito!');
 
-            return $this->redirectToRoute('app_my_profile');
+            return $this->redirectToRoute('app_mis_reservas');
         }
 
         return $this->render('reserva/index.html.twig', [
@@ -56,5 +54,23 @@ final class ReservaController extends AbstractController
         return $this->render('reserva/mis_reservas.html.twig',[
             'reservas' => $reservas
         ]);
+    }
+
+    #[Route('/reserva/delete/{id}', name: 'app_admin_reserva_delete', methods: ['POST'])]
+    public function delete(Request $request, Reserva $reserva, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $reserva->getId(), $request->getPayload()->getString('_token'))) {
+            $fecha = $reserva->getFecha()->format('d/m/Y');
+            $hora  = $reserva->getHora()->format('H:i');
+
+            $entityManager->remove($reserva);
+            $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                message: 'Tu reserva del día ' . $fecha . ' a la hora ' . $hora . ' ha sido cancelada');
+        }
+
+        return $this->redirectToRoute('app_mis_reservas', [], Response::HTTP_SEE_OTHER);
     }
 }

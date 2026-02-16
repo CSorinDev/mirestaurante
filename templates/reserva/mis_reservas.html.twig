@@ -21,22 +21,16 @@
 			<section>
 				<table class="center-table">
 					<tr>
-						<th>Fecha</th>
-						<th>Día</th>
-						<th>Hora</th>
+						<th>Reserva</th>
 						<th>Comensales</th>
 						<th>Cancelar</th>
 					</tr>
 					{% for reserva in reservas %}
 						<tr>
 							<td>
-								{{ reserva.fecha | date('d/m/Y') }}
-							</td>
-							<td>
 								{{ reserva.fecha | format_datetime(pattern="EEEE", locale="es") }}
-							</td>
-							<td>
-								{{ reserva.hora | date('H:i') }}
+								{{ reserva.fecha | date('d/m/Y') }}
+								{{ reserva.fecha | date('H:i') }}
 							</td>
 							<td>
 								{{ reserva.comensales }}
@@ -47,6 +41,7 @@
 						</tr>
 					{% endfor %}
 				</table>
+				<a class="btn center-link" href="{{ path('app_reserva') }}">Hacer una nueva reserva</a>
 			</section>
 		{% endif %}
 	</div>

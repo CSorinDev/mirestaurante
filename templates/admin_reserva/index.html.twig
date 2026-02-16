@@ -1,60 +1,28 @@
-{# {% extends 'base.html.twig' %} #}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-	<section>
-		<h2>Esta es la lista de reservas</h2>
-		{% if reservas %}
-			<table>
-				<thead>
-					<tr>
-						<th>
-							Nombre
-						</th>
-						<th>
-							Email
-						</th>
-						<th>
-							Teléfono
-						</th>
-						<th>
-							Fecha
-						</th>
-						<th>
-							Hora
-						</th>
-						<th>
-							Comensales
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for reserva in reservas %}
-                        <tr>
-                            <td>
-                                {{ reserva.user.name }}
-                            </td>
-                            <td>
-                                {{ reserva.user.email }}
-                            </td>
-                            <td>
-                                {{ reserva.user.phone }}
-                            </td>
-                            <td>
-                                {{ reserva.fecha | date('d/m/Y') }}
-                            </td>
-                            <td>
-                                {{ reserva.hora | date('H:i') }}
-                            </td>
-                            <td>
-                                {{ reserva.comensales }}
-                            </td>
-                        </tr>
-                    {% endfor %}
-				</tbody>
-			</table>
-
-		{% else %}
-			<p>No hay ninguna reserva</p>
-		{% endif %}
-	</section>
+	<main>
+		<section class="reservas-section">
+			<h2>Lista Reservas</h2>
+			{% if reservas %}
+				{% for reserva in reservas %}
+					<article class="reserva-card">
+						<h3>
+							Reserva nº
+							{{reserva.id}}
+						</h3>
+						<h4>{{reserva.user.name}}</h4>
+						<a href="mailto:{{reserva.user.email}}">{{reserva.user.email}}</a>
+						<a href="tel:{{reserva.user.phone}}">{{reserva.user.phone}}</a>
+						<p>{{reserva.fecha | format_datetime(pattern: 'EEEE, ', locale: "es")}}
+							{{reserva.fecha | date('d/m/Y')}}
+							a las
+							{{ reserva.hora | date('H:i') }}</p>
+					</article>
+				{% endfor %}
+			{% else %}
+				<p>No hay ninguna reserva</p>
+			{% endif %}
+		</section>
+	</main>
 {% endblock %}

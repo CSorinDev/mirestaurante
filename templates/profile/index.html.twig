@@ -10,13 +10,5 @@
 			<a class="btn" href="{{path('app_mis_reservas')}}">Ver mis reservas</a>
 			<a class="btn" href="/logout">Cerrar Sesión</a>
 		</section>
-		{% if isAdmin %}
-			<section class="flex-center">
-				<h1>Administración</h1>
-				<a class="btn" href="{{path('app_admin_categoria_index')}}">Categorias</a>
-				<a class="btn" href="{{path('app_admin_carta_index')}}">Productos</a>
-				<a class="btn" href="{{path('app_admin_reserva') }}">Reservas</a>
-			<section>
-		{% endif %}
 	</main>
 {% endblock %}
