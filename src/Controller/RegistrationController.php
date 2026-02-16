@@ -32,13 +32,15 @@ class RegistrationController extends AbstractController
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
-            // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
             // PONGO QUE EL USUARIO ESTÁ VERIFICADO POR DEFECTO
             $user->setIsVerified(true);
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash('success', "¡Felicidades! Te has registrado correctamente");
+            return $this->redirectToRoute('app_my_profile');
 
             // ESTO NO FUNCIONA PORQUE RAILWAY BLOQUEA EL SERVICIO STMP EN LA CAPA GRATUITA
 
@@ -53,7 +55,6 @@ class RegistrationController extends AbstractController
 
             // // do anything else you need here, like send an email
 
-            // return $this->redirectToRoute('app_index');
         }
 
         return $this->render('registration/register.html.twig', [
