@@ -10,23 +10,25 @@
 	<nav id="navMenu">
 		<ul>
 			<li>
-				<a href="/">INICIO</a>
+				<a href="{{ path('app_index') }}" class="{{ app.request.attributes.get('_route') == 'app_index' ? 'active-link' : '' }}">
+					INICIO
+				</a>
 			</li>
 			<li>
-				<a href="/carta">CARTA</a>
+				<a href="{{ path('app_carta') }}" class="{{ app.request.attributes.get('_route') == 'app_carta' ? 'active-link' : '' }}">CARTA</a>
 			</li>
 			<li>
-				<a href="/reserva">RESERVA</a>
+				<a href="{{ path('app_reserva') }}" class="{{ app.request.attributes.get('_route') == 'app_reserva' ? 'active-link' : '' }}">RESERVA</a>
 			</li>
 			{% if app.user %}
 				<li>
-					<a href="/mi-perfil">
+					<a href="{{ path('app_my_profile') }}" class="{{ app.request.attributes.get('_route') == 'app_my_profile' ? 'active-link' : '' }}">
 						{% include "/icons/person.html.twig" %}
 					</a>
 				</li>
 			{% else %}
 				<li>
-					<a href="/login">
+					<a href="{{ path('app_login') }}" class="{{ app.request.attributes.get('_route') == 'app_login' ? 'active-link' : '' }}">
 						INICIAR SESIÓN
 					</a>
 				</li>
@@ -34,9 +36,9 @@
 
 			{% if app.user %}
 				{% if 'ROLE_ADMIN' in app.user.roles %}
-				<li>
-					<a href='{{ path('app_admin') }}'>ADMIN</a>
-				</li>
+					<li>
+						<a href='{{ path('app_admin') }}' class="{{ app.request.attributes.get('_route') == 'app_index' ? 'active-link' : '' }}">ADMIN</a>
+					</li>
 				{% endif %}
 			{% endif %}
 		</ul>

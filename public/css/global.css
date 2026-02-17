@@ -77,6 +77,8 @@ small {
     font-style: italic;
 }
 
+
+
 /* BUTTON STYLE */
 .btn {
     color: #000;
@@ -169,6 +171,24 @@ small {
     margin: 2em 0;
     color: #000;
     text-decoration: none;
+}
+
+#navMenu a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background-color: var(--color-primary);
+    transition: .3s;
+}
+
+#navMenu a.active-link::after {
+    width: 100%;
+}
+
+#navMenu a:hover::after {
+    width: 100%;
 }
 
 /* FOOTER */
