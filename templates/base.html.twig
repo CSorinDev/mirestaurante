@@ -3,13 +3,15 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Reserva mesa en el mejor restaurante de la ciudad">
+		<meta name="author" content="Sorin C.">
+		<meta name="copyright" content="© 2026 Mi Restaurante S.L.">
 		<title>
 			miRestaurante
 			{% block title %}{% endblock %}
 		</title>
 		<link rel="icon" href="{{ asset('img/logo.png') }}">
-		<link href="{{ asset('css/global.css') }}" rel="stylesheet" type="text/css"/> 
-		{% block stylesheets %}{% endblock %}
+		<link href="{{ asset('css/global.css') }}" rel="stylesheet" type="text/css"/> {% block stylesheets %}{% endblock %}
 		<script src="{{ asset('js/script.js') }}" defer></script>
 		{% block javascripts %}{% endblock %}
 	</head>
