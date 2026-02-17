@@ -181,7 +181,7 @@ small {
     text-decoration: none;
 }
 
-#navMenu a::after {
+#navMenu a:not(.emoji)::after {
     content: "";
     width: 0%;
     height: 2px;
@@ -191,11 +191,11 @@ small {
     transition: .3s;
 }
 
-#navMenu a.active-link::after {
+#navMenu a.active-link:not(.emoji)::after {
     width: 100%;
 }
 
-#navMenu a:hover::after {
+#navMenu a:not(.emoji):hover::after {
     width: 100%;
 }
 
