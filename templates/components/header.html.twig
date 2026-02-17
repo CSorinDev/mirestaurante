@@ -22,7 +22,7 @@
 			</li>
 			{% if app.user %}
 				<li>
-					<a href="{{ path('app_my_profile') }}" class="{{ app.request.attributes.get('_route') == 'app_my_profile' ? 'active-link' : '' }}">
+					<a href="{{ path('app_my_profile') }} ">
 						{% include "/icons/person.html.twig" %}
 					</a>
 				</li>
@@ -37,7 +37,7 @@
 			{% if app.user %}
 				{% if 'ROLE_ADMIN' in app.user.roles %}
 					<li>
-						<a href='{{ path('app_admin') }}' class="{{ app.request.attributes.get('_route') == 'app_index' ? 'active-link' : '' }}">ADMIN</a>
+						<a href='{{ path('app_admin') }}' class="{{ app.request.attributes.get('_route') == 'app_admin' ? 'active-link' : '' }}">ADMIN</a>
 					</li>
 				{% endif %}
 			{% endif %}

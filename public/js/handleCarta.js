@@ -3,6 +3,7 @@ window.onload = () => {
     const cartaSection = document.querySelector("#carta-section")
     let carta = []
 
+    cartaSection.innerHTML = "<p>Cargando la carta...</p>"
     fetch("/api/carta")
         .then(res => res.json())
         .then(data => {
@@ -11,6 +12,8 @@ window.onload = () => {
             if (categoriaButtons.length > 0) {
                 filterCarta(categoriaButtons[0].value)
                 changeButtonsStyle(categoriaButtons[0])
+            } else {
+                cartaSection.innerHTML = "No elementos en la carta"
             }
 
             categoriaButtons.forEach(button => {
@@ -19,6 +22,9 @@ window.onload = () => {
                     changeButtonsStyle(this)
                 }
             })
+        })
+        .catch(e => {
+            cartaSection.innerHTML = "<p>Ha ocurrido un error al intentar cargar la carta</p>"
         })
 
     function filterCarta(cat) {
