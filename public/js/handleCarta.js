@@ -35,7 +35,7 @@ window.onload = () => {
     function showCategory(carta) {
         cartaSection.innerHTML = carta.map(({ nombre, descripcion, imagen, precio }) => `
         <article class="carta-item">
-        ${imagen ? `<img src="uploads/productos/${imagen}" alt="${nombre}">` : ''}
+        ${imagen ? `<img src="uploads/productos/${imagen}" alt="Imagen del plato: ${nombre}">` : ''}
             <h3>${nombre}</h3>
             ${descripcion ? `<p class="descripcion">${descripcion}</p>` : ''}
             <p class="precio">${parseFloat(precio).toFixed(2).replace(".", ",")}€</p>
