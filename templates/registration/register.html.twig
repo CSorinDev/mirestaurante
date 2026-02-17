@@ -15,7 +15,14 @@
 		{{ form_row(registrationForm.name) }}
 		{{ form_row(registrationForm.phone) }}
 		{{ form_row(registrationForm.plainPassword) }}
-		{{ form_row(registrationForm.agreeTerms) }}
+		<div>
+			<label for="registrationForm.agreeTerms.vars.id">
+				<a href="{{ path('app_terminos') }}" target="_blank">
+					Acepto términos y condiciones
+				</a>
+			</label>
+			{{ form_widget(registrationForm.agreeTerms) }}
+		</div>
 		<div>
 			<button type="submit" class="btn">Registrar</button>
 		</div>
