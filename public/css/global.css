@@ -170,12 +170,15 @@ small {
     width: 100%;
 }
 
-#navMenu li,
-#navMenu a {
+#navMenu li {
     padding: .25em .5em;
     margin: 2em 0;
     color: #000;
     text-decoration: none;
+}
+
+#navMenu a {
+    color: var(--color-primary);
 }
 
 #navMenu a:not(.emoji)::after {
