@@ -34,12 +34,12 @@ main {
 
 section {
     padding: 1em;
+    margin: 0 auto;
+    margin-bottom: 5em;
 }
 
 section:not(#hero) {
     max-width: 1240px;
-    margin: 0 auto;
-    margin-bottom: 5em;
 }
 
 article {
@@ -208,6 +208,10 @@ small {
     margin: 0 auto;
     font-size: 1em;
     /* padding: .5em 1em; */
+}
+
+#hero p {
+    padding: 1em;
 }
 
 /* FOOTER */
@@ -395,7 +399,7 @@ form div input[type='file'] {
     margin: 1em 0;
 }
 
-form~section {
+form ~ div {
     display: flex;
     justify-content: center;
 }
@@ -510,7 +514,7 @@ form button {
     columns: 1;
 }
 
-.ventajas div {
+.ventajas article {
     background: linear-gradient(45deg, #efefef, #dedede);
     box-shadow: var(--shadow-medium);
     padding: 2em;

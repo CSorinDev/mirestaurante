@@ -10,5 +10,11 @@ function toggleMenu() {
     navMenu.classList.contains("active") 
     ? navMenu.classList.remove("active") 
     : navMenu.classList.add("active")
+
+    changeHbStyle()
+}
+
+function changeHbStyle() {
+    // change hb style
 }
 

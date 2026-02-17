@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} - Registro{% endblock %}
+{% block title %}
+	- Registro
+{% endblock %}
 
 {% block body %}
 	<main>
@@ -28,13 +30,11 @@
 		<div>
 			<button type="submit" class="btn">Registrar</button>
 		</div>
-		<div>
-			<section>
-				<p>¿Ya tienes una cuenta?
-					<a href="/login">Inicia sesión</a>
-				</p>
-			</section>
-		</div>
 		{{ form_end(registrationForm) }}
+		<div>
+			<p>¿Ya tienes una cuenta?
+				<a href="/login">Inicia sesión</a>
+			</p>
+		</div>
 	</main>
 {% endblock %}
