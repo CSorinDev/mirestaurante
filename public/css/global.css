@@ -42,6 +42,10 @@ section:not(#hero) {
     margin-bottom: 5em;
 }
 
+article {
+    margin-bottom: 5em;
+}
+
 h1 {
     text-align: center;
     margin: 1em 0;
