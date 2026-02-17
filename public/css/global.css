@@ -112,10 +112,6 @@ small {
     max-height: 48px;
 }
 
-#mainHeader li a:last-child {
-    padding: 0;
-}
-
 #mainHeader:not(nav) {
     z-index: 10;
 }
