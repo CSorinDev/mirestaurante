@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Carta
+{% block title %}
+	- Editar Carta
 {% endblock %}
 
 {% block body %}
@@ -10,8 +11,8 @@
 
 		{{ include('admin_carta/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
-<section class="flex-center">
-		<a href="{{ path('app_admin_carta_index') }}">Volver a la lista de productos</a>
-</section>
+		<section class="flex-center">
+			<a href="{{ path('app_admin_carta_index') }}">Volver a la lista de productos</a>
+		</section>
 	</main>
 {% endblock %}
