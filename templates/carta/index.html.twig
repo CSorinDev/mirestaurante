@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} - Carta{% endblock %}
+{% block title %}
+	- Carta
+{% endblock %}
 
 {% block stylesheets %}
-<script src="{{ asset('js/handleCarta.js') }}" defer></script>
+	<script src="{{ asset('js/handleCarta.js') }}" defer></script>
 {% endblock %}
 
 
@@ -11,7 +13,7 @@
 	<main>
 		<header id="categoria-header">
 			{% for categoria in categorias %}
-				<button value="{{categoria.nombre}}">{{ categoria.nombre }}</button>
+				<button class="category-button" value="{{categoria.nombre}}">{{ categoria.nombre }}</button>
 			{% endfor %}
 		</header>
 

@@ -10,10 +10,14 @@ window.onload = () => {
 
             if (categoriaButtons.length > 0) {
                 filterCarta(categoriaButtons[0].value)
+                changeButtonsStyle(categoriaButtons[0])
             }
 
             categoriaButtons.forEach(button => {
-                button.onclick = function () { filterCarta(this.value) }
+                button.onclick = function () { 
+                    filterCarta(this.value) 
+                    changeButtonsStyle(this)
+                }
             })
         })
 
@@ -31,5 +35,10 @@ window.onload = () => {
             <p class="precio">${parseFloat(precio).toFixed(2).replace(".", ",")}€</p>
         </article>
     `).join('');
+    }
+
+    function changeButtonsStyle(button) {
+        categoriaButtons.forEach(button => button.classList.remove('active'))
+        button.classList.add('active')
     }
 }
