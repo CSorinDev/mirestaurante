@@ -108,6 +108,10 @@ small {
     box-shadow: var(--shadow-medium);
 }
 
+#mainHeader .logo {
+    max-height: 48px;
+}
+
 #mainHeader li a:last-child {
     padding: 0;
 }
@@ -124,21 +128,25 @@ small {
     background-color: transparent;
 }
 
-#hbBtn div:nth-child(1),
-#hbBtn div:nth-child(2),
-#hbBtn div:nth-child(3) {
+#hbBtn span {
+    display: block;
+}
+
+#hbBtn span:nth-child(1),
+#hbBtn span:nth-child(2),
+#hbBtn span:nth-child(3) {
     width: 100%;
     height: 5px;
     border-radius: 50px;
     background-color: var(--color-primary);
 }
 
-#hbBtn div:nth-child(1) {
+#hbBtn span:nth-child(1) {
     position: relative;
     top: -5px;
 }
 
-#hbBtn div:nth-child(3) {
+#hbBtn span:nth-child(3) {
     position: relative;
     top: 5px;
 }
@@ -191,39 +199,6 @@ small {
     width: 100%;
 }
 
-/* FOOTER */
-
-footer {
-    padding: 1em;
-    text-align: center;
-    border-top: 1px solid var(--color-primary);
-    font-size: small;
-}
-
-/* MEDIA QUERYS */
-
-@media (min-width:760px) {
-    #hbBtn {
-        display: none;
-    }
-
-    #navMenu {
-        position: static;
-        height: fit-content;
-        width: fit-content;
-    }
-
-    #navMenu ul {
-        display: flex;
-        gap: 1em;
-    }
-
-    #navMenu li {
-        margin: 0 .25em;
-        padding: 0;
-    }
-}
-
 #heroImg {
     width: 100%;
 }
@@ -233,6 +208,15 @@ footer {
     margin: 0 auto;
     font-size: 1em;
     /* padding: .5em 1em; */
+}
+
+/* FOOTER */
+
+footer {
+    padding: 1em;
+    text-align: center;
+    border-top: 1px solid var(--color-primary);
+    font-size: small;
 }
 
 /* CARTA */
@@ -521,3 +505,50 @@ form button {
     padding: 1em;
     border-bottom: 1px solid var(--color-primary);
 }
+
+.ventajas {
+    columns: 1;
+}
+
+.ventajas div {
+    background: linear-gradient(45deg, #efefef, #dedede);
+    box-shadow: var(--shadow-medium);
+    padding: 2em;
+    margin-bottom: 2em;
+}
+
+.ventajas span {
+    display: inline-block;
+    font-size: 32px;
+}
+
+/* MEDIA QUERYS */
+
+@media (min-width:760px) {
+    #hbBtn {
+        display: none;
+    }
+
+    #navMenu {
+        position: static;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    #navMenu ul {
+        display: flex;
+        gap: 1em;
+    }
+
+    #navMenu li {
+        margin: 0 .25em;
+        padding: 0;
+    }
+
+    .ventajas {
+    columns: 3;
+}
+}
+
+
+
