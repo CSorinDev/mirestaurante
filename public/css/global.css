@@ -1,7 +1,8 @@
 :root {
     --color-primary: #000;
-    --color-background: #ff6347;
-    --color-background-hover: #f3593e;
+    --background-color: #ff6347;
+    --background-color-hover: #f3593e;
+    --background-gradient: linear-gradient(45deg, #efefef, #dedede);
     --shadow-medium: 3px 3px 5px #aaa, -3px 3px 5px #aaa;
 }
 
@@ -65,7 +66,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: var(--color-background-hover)
+    color: var(--background-color-hover)
 }
 
 p {
@@ -82,7 +83,7 @@ small {
 /* BUTTON STYLE */
 .btn {
     color: #000;
-    background-color: var(--color-background);
+    background-color: var(--background-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -92,9 +93,9 @@ small {
 }
 
 .btn:hover {
-    background-color: var(--color-background-hover);
+    background-color: var(--background-color-hover);
     /* scale: 102%; */
-    box-shadow: 1px 1px 3px var(--color-background), 1px -1px 3px var(--color-background);
+    box-shadow: 1px 1px 3px var(--background-color), 1px -1px 3px var(--background-color);
 }
 
 /* HEADER */
@@ -104,7 +105,7 @@ small {
     justify-content: space-between;
     align-items: center;
     padding: 1em;
-    background-color: var(--color-background);
+    background-color: var(--background-color);
     box-shadow: var(--shadow-medium);
 }
 
@@ -244,11 +245,11 @@ footer {
 }
 
 #cartaHeader li:hover {
-    background-color: var(--color-background);
+    background-color: var(--background-color);
 }
 
 #cartaHeader li.active {
-    background-color: var(--color-background);
+    background-color: var(--background-color);
     color: #fff;
 }
 
@@ -299,7 +300,7 @@ footer {
     border-radius: 10px;
     width: 280px;
     height: 350px;
-    background: linear-gradient(45deg, #fff, #eee);
+    background: var(--background-gradient);
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -473,18 +474,18 @@ form button {
     padding: .25em .5em;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid var(--color-background-hover);
+    border: 1px solid var(--background-color-hover);
     font-size: 16px;
     transition: .3s;
 }
 
 .category-button.active {
-    background-color: var(--color-background);
+    background-color: var(--background-color);
     color: white;
 }
 
 .category-button:hover {
-    background-color: var(--color-background);
+    background-color: var(--background-color);
     color: white;
 }
 
@@ -511,7 +512,8 @@ form button {
 }
 
 .ventajas article {
-    background: linear-gradient(45deg, #efefef, #dedede);
+    background: var(--background-gradient);
+    border-radius: 10px;
     box-shadow: var(--shadow-medium);
     padding: 2em;
     margin-bottom: 2em;
