@@ -349,6 +349,24 @@ footer {
 
 /* RESERVAS LIST */
 
+.reservas-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.reservas-list div {
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+}
+
+.reservas-list button {
+    margin-top: 1em;
+}
+
 .reservas-list-no-reservas {
     display: grid;
     place-content: center;

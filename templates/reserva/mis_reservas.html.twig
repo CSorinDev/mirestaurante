@@ -17,44 +17,87 @@
 		{% if reservas is empty %}
 			<section class="reservas-list-no-reservas">
 				<p>No tienes ninguna reserva todavía.</p>
-				<a class="btn" href="{{ path('app_reserva') }}" class="btn btn-primary">
-					Hacer una Reserva
+				<a class="btn center-link" href="{{ path('app_reserva') }}" class="btn btn-primary">
+					Hacer Reserva
 				</a>
 			</section>
 		{% else %}
 			<section>
-				<table class="center-table">
-					<tr>
-						<th>Reserva</th>
-						<th>Comensales</th>
-						<th>Confirmada</th>
-						<th>Cancelar</th>
-					</tr>
-					{% for reserva in reservas %}
-						<tr>
-							<td>
-								{{ reserva.fecha | format_datetime(pattern="EEEE", locale="es") }}
-								{{ reserva.fecha | date('d/m/Y') }}
-								{{ reserva.hora | date('H:i') }}
-							</td>
-							<td>
-								{{ reserva.comensales }}
-							</td>
-							<td>
-								{% if reserva.confirmada %}
-									<span class="alert-success">✅</span>
-								{% else %}
-									<span class="alert-error">❌</span>
-								{% endif %}
-							</td>
-							<td>
-								{{ include('/reserva/_delete_form.html.twig') }}
-							</td>
-						</tr>
-					{% endfor %}
-				</table>
-				<a class="btn center-link" href="{{ path('app_reserva') }}">Hacer una nueva reserva</a>
+				<a class="btn center-link" href="{{ path('app_reserva') }}" class="btn btn-primary">
+					Nueva Reserva
+				</a>
 			</section>
-		{% endif %}
-	</div>
-</main>{% endblock %}
+			<section class="reservas-list">
+				{% for reserva in reservas %}
+					<div>
+						<p>
+							<strong>
+								Fecha:
+							</strong>
+							{{reserva.fecha | format_datetime(pattern: 'EEEE', locale: "es") }},
+							{{reserva.fecha | date('d/m/Y')}}
+						</p>
+						<p>
+							<strong>
+								Hora:
+							</strong>
+							{{ reserva.hora | date('H:i') }}
+						</p>
+
+					</p>
+					<p>
+						<strong>
+							Comensales:
+						</strong>
+						{{reserva.comensales}}
+					</p>
+					<p>
+						<strong>
+							Confirmada:
+						</strong>
+						{% if reserva.confirmada %}
+							✅
+						{% else %}
+							⏳
+						{% endif %}
+					</p>
+					{{ include('/reserva/_delete_form.html.twig') }}
+				</div>
+
+			{% endfor %}
+		</section>
+		{# <section>
+																																					<table class="center-table">
+																																						<tr>
+																																							<th>Reserva</th>
+																																							<th>Comensales</th>
+																																							<th>Confirmada</th>
+																																							<th>Cancelar</th>
+																																						</tr>
+																																						{% for reserva in reservas %}
+																																							<tr>
+																																								<td>
+																																									{{ reserva.fecha | format_datetime(pattern="EEEE", locale="es") }}
+																																									{{ reserva.fecha | date('d/m/Y') }}
+																																									{{ reserva.hora | date('H:i') }}
+																																								</td>
+																																								<td>
+																																									{{ reserva.comensales }}
+																																								</td>
+																																								<td>
+																																									{% if reserva.confirmada %}
+																																										<span class="alert-success">✅</span>
+																																									{% else %}
+																																										<span class="alert-error">❌</span>
+																																									{% endif %}
+																																								</td>
+																																								<td>
+																																									{{ include('/reserva/_delete_form.html.twig') }}
+																																								</td>
+																																							</tr>
+																																						{% endfor %}
+																																					</table>
+																																					<a class="btn center-link" href="{{ path('app_reserva') }}">Hacer una nueva reserva</a>
+																																				</section> #}
+	{% endif %}
+</div></main>{% endblock %}
