@@ -29,4 +29,29 @@ final class AdminReservaController extends AbstractController
 
         return $this->redirectToRoute('app_admin_reserva');
     }
+
+    #[Route('/admin/reserva/delete-old', name: 'app_admin_reserva_delete_old')]
+    public function eliminar(ReservaRepository $reservaRepository, EntityManagerInterface $em): Response
+    {
+        $encontradas = false;
+        $reservas    = $reservaRepository->findAll();
+
+        foreach ($reservas as $reserva) {
+            if ($reserva->getFecha() < new \DateTime()) {
+                $encontradas = true;
+                $em->remove($reserva);
+            }
+        }
+        
+        if (! $encontradas) {
+            $this->addFlash('info', 'No se encontraron reservas antiguas para eliminar.');
+        } else {
+            $this->addFlash('success', 'Reservas antiguas eliminadas correctamente.');
+
+
+        }
+        $em->flush();
+
+        return $this->redirectToRoute('app_admin_reserva');
+    }
 }

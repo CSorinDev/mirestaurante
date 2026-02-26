@@ -7,6 +7,16 @@
 {% block body %}
 	<main>
 		<h1>Lista Reservas</h1>
+		<button class="btn center-link">
+			<a href="{{ path('app_admin_reserva_delete_old') }}">
+				Borrar reservas antiguas
+			</a>
+		</button>
+		{% for messages in app.flashes %}
+			{% for message in messages %}
+				<p style="text-align: center; color: green;">{{ message }}</p>
+			{% endfor %}
+		{% endfor %}
 		<section class="reservas-list">
 			{% if reservas %}
 				{% for reserva in reservas %}

@@ -50,7 +50,7 @@ class AppFixtures extends Fixture
 
         $reserva2 = new Reserva();
         $reserva2->setUser($user2);
-        $reserva2->setFecha(new \DateTime('2026-03-04'));
+        $reserva2->setFecha(new \DateTime('2026-02-04'));
         $reserva2->setHora(new \DateTime('19:00'));
         $reserva2->setComensales(2);
 
