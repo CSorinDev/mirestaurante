@@ -6,11 +6,11 @@
 
 {% block body %}
 	<main>
-		<section class="reservas-section">
-			<h2>Lista Reservas</h2>
+		<h1>Lista Reservas</h1>
+		<section class="reservas-list">
 			{% if reservas %}
 				{% for reserva in reservas %}
-					<article class="reserva-card">
+					<div class="r">
 						<h3>
 							Reserva nº
 							{{reserva.id}}
@@ -23,13 +23,16 @@
 							a las
 							{{ reserva.hora | date('H:i') }}
 						</p>
-						<p>{{reserva.comensales}} comensales</p>
+						<p>{{reserva.comensales}}
+							comensales</p>
 						{% if reserva.confirmada %}
-						<p>Confirmada ✅</p>
-					{% else %}
-						<button class="btn"><a href="{{ path('app_admin_reserva_confirmar', {'id': reserva.id}) }}">Confirmar</a></button>
-					{% endif %}
-					</article>
+							<p>Confirmada ✅</p>
+						{% else %}
+							<button class="btn center-link">
+								<a href="{{ path('app_admin_reserva_confirmar', {'id': reserva.id}) }}">Confirmar</a>
+							</button>
+						{% endif %}
+					</div>
 				{% endfor %}
 			{% else %}
 				<p>No hay ninguna reserva</p>
