@@ -1,12 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} - Admin Categoría{% endblock %}
+{% block title %}
+	- Admin Categoría
+{% endblock %}
 
 {% block body %}
 	<main>
 		<h1>Categorías</h1>
 
 		<a class="btn center-link" href="{{ path('app_admin_categoria_new') }}">Añadir Categoría</a>
+
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<p class="alert-{{ label }}">{{ message }}</p>
+			{% endfor %}
+		{% endfor %}
 
 		{% if categorias %}
 			<table>
