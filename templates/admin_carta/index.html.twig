@@ -11,6 +11,12 @@
 			<a class="btn center-link" href="{{ path('app_admin_carta_new') }}">
 				Añadir nuevo producto
 			</a>
+
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
+				<p class="alert-{{ label }}">{{ message }}</p>
+			{% endfor %}
+		{% endfor %}
 			<br>
 
 			{% if cartas %}

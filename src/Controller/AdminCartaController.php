@@ -41,6 +41,7 @@ final class AdminCartaController extends AbstractController
             $entityManager->persist($carta);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Plato creado correctamente.');
             return $this->redirectToRoute('app_admin_carta_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,12 +70,13 @@ final class AdminCartaController extends AbstractController
 
             if ($imageFile) {
                 $this->deleteOldImage($carta->getImagen());
-                
+
                 $newFilename = $this->uploadImage($imageFile, $slugger);
                 $carta->setImagen($newFilename);
             }
 
             $entityManager->flush();
+            $this->addFlash('success', 'Plato actualizado correctamente.');
 
             return $this->redirectToRoute('app_admin_carta_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -93,6 +95,7 @@ final class AdminCartaController extends AbstractController
 
             $entityManager->remove($carta);
             $entityManager->flush();
+            $this->addFlash('success', 'Plato eliminado correctamente.');
         }
 
         return $this->redirectToRoute('app_admin_carta_index', [], Response::HTTP_SEE_OTHER);
@@ -110,7 +113,8 @@ final class AdminCartaController extends AbstractController
                 $newFilename
             );
         } catch (FileException $e) {
-            // Error al subir
+            $this->addFlash('error', 'Error al subir la imagen:');
+            $this->redirectToRoute('app_admin_carta_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $newFilename;

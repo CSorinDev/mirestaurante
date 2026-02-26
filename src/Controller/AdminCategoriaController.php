@@ -29,6 +29,7 @@ final class AdminCategoriaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Categoría creada correctamente.');
             $entityManager->persist($categoria);
             $entityManager->flush();
 
@@ -56,6 +57,7 @@ final class AdminCategoriaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->addFlash('success', 'Categoría actualizada correctamente.');
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_categoria_index', [], Response::HTTP_SEE_OTHER);
