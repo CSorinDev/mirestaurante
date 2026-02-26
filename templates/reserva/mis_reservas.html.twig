@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} - Mis Reservas{% endblock %}
+{% block title %}
+	- Mis Reservas
+{% endblock %}
 
 {% block body %}
 	<main>
@@ -25,6 +27,7 @@
 					<tr>
 						<th>Reserva</th>
 						<th>Comensales</th>
+						<th>Confirmada</th>
 						<th>Cancelar</th>
 					</tr>
 					{% for reserva in reservas %}
@@ -36,6 +39,13 @@
 							</td>
 							<td>
 								{{ reserva.comensales }}
+							</td>
+							<td>
+								{% if reserva.confirmada %}
+									<span class="alert-success">Sí</span>
+								{% else %}
+									<span class="alert-error">No</span>
+								{% endif %}
 							</td>
 							<td>
 								{{ include('/reserva/_delete_form.html.twig') }}

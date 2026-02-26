@@ -56,6 +56,9 @@ class Reserva
     #[ORM\Column]
     private ?int $comensales = null;
 
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private bool $confirmada = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Reserva
     public function setComensales(int $comensales): static
     {
         $this->comensales = $comensales;
+
+        return $this;
+    }
+
+    public function isConfirmada(): bool
+    {
+        return $this->confirmada;
+    }
+
+    public function setConfirmada(bool $confirmada): static
+    {
+        $this->confirmada = $confirmada;
 
         return $this;
     }

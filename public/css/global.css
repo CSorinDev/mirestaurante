@@ -333,10 +333,13 @@ footer {
     margin-bottom: .5em;
 }
 
-/* ALERTAS FLASH */
-
 .alert-success {
     color: green;
+    text-align: center;
+}
+
+.alert-error {
+    color: red;
     text-align: center;
 }
 

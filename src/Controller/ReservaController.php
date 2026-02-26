@@ -48,7 +48,7 @@ final class ReservaController extends AbstractController
 
         $reservas = $reservaRepository->findBy(
             ['user' => $this->getUser()],
-            ['fecha' => "desc", "hora" => "desc"]
+            ['fecha' => "desc", "hora" => "desc"],
         );
 
         return $this->render('reserva/mis_reservas.html.twig',[
