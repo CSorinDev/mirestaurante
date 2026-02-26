@@ -98,6 +98,10 @@ small {
     box-shadow: 1px 1px 3px var(--background-color), 1px -1px 3px var(--background-color);
 }
 
+.btn a {
+    color: inherit !important;
+}
+
 /* HEADER */
 
 #mainHeader {

@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Reserva;
 use App\Repository\ReservaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -19,5 +21,12 @@ final class AdminReservaController extends AbstractController
         ]);
     }
 
-    
+    #[Route('/admin/reserva/{id}/confirmar', name: 'app_admin_reserva_confirmar')]
+    public function confirmar(Reserva $reserva, EntityManagerInterface $em): Response
+    {
+        $reserva->setConfirmada(true);
+        $em->flush();
+
+        return $this->redirectToRoute('app_admin_reserva');
+    }
 }

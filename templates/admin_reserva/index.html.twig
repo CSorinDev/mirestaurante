@@ -24,7 +24,11 @@
 							{{ reserva.hora | date('H:i') }}
 						</p>
 						<p>{{reserva.comensales}} comensales</p>
-						<p>{{reserva.confirmada ? 'Confirmada' : '<a href="">Confirmar</a>'}}</p>
+						{% if reserva.confirmada %}
+						<p>Confirmada ✅</p>
+					{% else %}
+						<button class="btn"><a href="{{ path('app_admin_reserva_confirmar', {'id': reserva.id}) }}">Confirmar</a></button>
+					{% endif %}
 					</article>
 				{% endfor %}
 			{% else %}
